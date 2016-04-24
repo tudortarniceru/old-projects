@@ -143,7 +143,7 @@
 					}
 				}
 				document.getElementById("start").innerHTML = "<button id='restartb' onclick=restartg()>Restart</button>";
-				document.getElementById("desc").innerHTML = "<b>How to play:</b> Click on a square from the left side to change its and its neighbours colour.<br>Make both lines look the same.";
+				document.getElementById("desc").innerHTML = "<b>How to play:</b> Click on a square from the left side to change its and its neighbours colour.<br>Make both grids look the same.";
 				wrt();
 				clk = 0;
 				document.getElementById("score").innerHTML = clk;
@@ -156,7 +156,7 @@
 				wrta();
 				document.getElementById("start").innerHTML = "<button id='restartg' onclick=restartg()>Restart</button>";
 				document.getElementById("newg").innerHTML = "<button id='newg' onclick=start()>New Game</button>";
-				document.getElementById("desc").innerHTML = "<b>How to play:</b> Click on a square from the left side to change its and its neighbours colour.<br>Make both lines look the same.";
+				document.getElementById("desc").innerHTML = "<b>How to play:</b> Click on a square from the left side to change its and its neighbours colour.<br>Make both grids look the same.";
 				clk = 0;
 				document.getElementById("score").innerHTML = clk;
 			}
@@ -198,7 +198,7 @@
 				
 				</div>
 				<div style="clear:both;">
-					<p id="desc" style="height:40px; width:900px"><b>How to play:</b> Click on a square from the left side to change its and its neighbours colour.<br>Make both lines look the same.</p>
+					<p id="desc" style="height:40px; width:900px"><b>How to play:</b> Click on a square from the left side to change its and its neighbours colour.<br>Make both grids look the same.</p>
 					<p id="bf_score" style="font-weight:bold; height:20px;">Score: <span id="score">-</span></p>
 					<p style="height:30px;"><span id = "start">Choose a difficulty</span> <span id="newg"></span></p>
 					<p><button id="veasy" onclick=veasy()>Very Easy</button> <button id="easy" onclick=easy()>Easy</button> <button id="med" onclick=med()>Medium</button> <button id="hard" onclick=hard()>Hard</button> <button id="veasy" onclick=vhard()>Very Hard</button></p>
