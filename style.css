@@ -1,0 +1,60 @@
+body {
+	background-color:rgb(244, 240, 241);
+}
+div.block {
+	width:50px;
+	height:50px;
+	display:inline-block;
+	border: 2.5px solid black;
+}
+.zero {
+	background-color:rgb(177, 183, 197);
+}
+.one {
+	background-color:rgb(254, 234, 152);
+}
+button {
+    background-color: #4CAF50;
+    border: 2px solid black;
+    color: white;
+	width:100px;
+	padding: 5px;
+    text-align: center;
+    display: inline-block;
+	margin: 2px;
+	border-radius: 10px;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+button:hover {
+	background-color: red;
+    color: white;
+}
+div.game_zone {
+	width:1000px;
+	height:825px;
+	background-color: rgb(211, 201, 190);
+	border-radius: 25px;
+	border: 5px rgb(175, 158, 143) solid;
+	color: black;
+	margin:20px;
+	padding:10px;
+	font-family: consolas;
+	
+}
+div.gsquare {
+	width:450px;
+	height:450px;
+	padding:10px;
+	margin:10px;
+	background-color: rgb(193, 180, 166);
+	border-radius: 25px;
+	border: 5px rgb(175, 158, 143) solid;
+}
+div.v {
+	float:left;
+}
+div.a {
+	float:right;
+}
