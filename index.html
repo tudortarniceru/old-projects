@@ -14,6 +14,7 @@
 			var d1 = [0, -1, 0, 1, 0];
 			var d2 = [0, 0, 1, 0, -1];
 			var clk = 0;
+			var ply = 1;
 			function check() {
 				var ok = 1;
 				for (i = 1; i <= n; ++i) {
@@ -27,6 +28,7 @@
 				}
 				wrt();
 				if (ok == 1) {
+					ply = 0;
 					document.getElementById("desc").innerHTML = "Congratulations! You won!";
 					document.getElementById("start").innerHTML = "<button id='replayg' onclick=restartg()>Replay</button>";
 				}
@@ -54,11 +56,13 @@
 				return xg;
 			}
 			function chg(x, y) {
-				for (k = 0; k <= 4; ++k) {
-					v[x + d1[k]][y + d2[k]]++;
-					v[x + d1[k]][y + d2[k]] %= 2;
+				if (ply == 1) {
+					for (k = 0; k <= 4; ++k) {
+						v[x + d1[k]][y + d2[k]]++;
+						v[x + d1[k]][y + d2[k]] %= 2;
+					}
+					check();
 				}
-				check();
 			}
 			function chgv(x, y) {
 				for (k = 0; k <= 4; ++k) {
@@ -92,7 +96,10 @@
 						}
 					}
 				}
-				if (df < 2) {
+				if (df == 0) {
+					gena();
+				}
+				else if (df < 2) {
 					if (n >= 3) {
 						gena();
 					}
@@ -146,6 +153,7 @@
 				document.getElementById("desc").innerHTML = "<b>How to play:</b> Click on a square from the left side to change its and its neighbours colour.<br>Make both grids look the same.";
 				wrt();
 				clk = 0;
+				ply = 1;
 				document.getElementById("score").innerHTML = clk;
 			}
 			function start() {
@@ -158,6 +166,7 @@
 				document.getElementById("newg").innerHTML = "<button id='newg' onclick=start()>New Game</button>";
 				document.getElementById("desc").innerHTML = "<b>How to play:</b> Click on a square from the left side to change its and its neighbours colour.<br>Make both grids look the same.";
 				clk = 0;
+				ply = 1;
 				document.getElementById("score").innerHTML = clk;
 			}
 			function veasy() {
