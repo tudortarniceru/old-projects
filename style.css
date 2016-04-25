@@ -5,7 +5,10 @@ div.block {
 	width:50px;
 	height:50px;
 	display:inline-block;
-	border: 2.5px solid black;
+	border: 2px solid black;
+}
+.pl:hover {
+	filter:brightness(85%);
 }
 .zero {
 	background-color:rgb(177, 183, 197);
@@ -39,15 +42,15 @@ div.game_zone {
 	border: 5px rgb(175, 158, 143) solid;
 	color: black;
 	margin:20px;
-	padding:10px;
+	padding:0.5px 10px 5px 10px;
 	font-family: consolas;
 	
 }
 div.gsquare {
 	width:450px;
-	height:450px;
+	height:460px;
 	padding:10px;
-	margin:10px;
+	margin:0.5px 10px 10px 10px;
 	background-color: rgb(193, 180, 166);
 	border-radius: 25px;
 	border: 5px rgb(175, 158, 143) solid;
