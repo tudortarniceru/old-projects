@@ -28,11 +28,14 @@ button {
 	border-radius: 10px;
     -webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
-    cursor: pointer;
+    cursor: default;
 }
 button:hover {
 	background-color: red;
     color: white;
+}
+.done {
+	background-color: #00B89D;
 }
 div.game_zone {
 	width:1000px;
