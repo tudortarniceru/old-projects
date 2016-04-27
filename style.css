@@ -16,7 +16,7 @@ div.block {
 .one {
 	background-color:rgb(254, 234, 152);
 }
-button {
+button.a {
     background-color: #4CAF50;
     border: 2px solid black;
     color: white;
@@ -30,16 +30,34 @@ button {
     transition-duration: 0.2s;
     cursor: default;
 }
-button:hover {
+button.b {
+	background-color: #4CAF50;
+    border: 2px solid black;
+    color: white;
+	width: 70px;
+    text-align: center;
+    display: inline-block;
+	border-radius: 10px;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    cursor: default;
+}
+select.b {
+	background-color: #4CAF50;
+	width:40px;
+	color: white;
+	border:0.1px solid black;
+}
+button.a:hover, button.b:hover , button.done:hover  {
 	background-color: red;
     color: white;
 }
-.done {
+button.done {
 	background-color: #00B89D;
 }
 div.game_zone {
 	width:1000px;
-	height:825px;
+	height:855px;
 	background-color: rgb(211, 201, 190);
 	border-radius: 25px;
 	border: 5px rgb(175, 158, 143) solid;
