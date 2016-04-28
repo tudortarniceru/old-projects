@@ -1,5 +1,6 @@
 body {
 	background-color:rgb(244, 240, 241);
+	cursor: default;
 }
 div.block {
 	width:50px;
@@ -47,6 +48,12 @@ select.b {
 	width:40px;
 	color: white;
 	border:0.1px solid black;
+	-webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+}
+select.b:hover {
+	background-color: red;
+	color: white;
 }
 button.a:hover, button.b:hover , button.done:hover  {
 	background-color: red;
