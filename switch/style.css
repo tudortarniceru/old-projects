@@ -1,12 +1,14 @@
 body {
-	background-color:rgb(244, 240, 241);
+	font-family: consolas;
+	background-image: url("data/background.png");
 	cursor: default;
+	color: white;
 }
 div.block {
 	width:50px;
 	height:50px;
 	display:inline-block;
-	border: 2px solid black;
+	border: 2px solid #282C33;
 }
 .pl:hover {
 	filter:brightness(85%);
@@ -17,43 +19,32 @@ div.block {
 .one {
 	background-color:rgb(254, 234, 152);
 }
-a {
-	color: #367c39;
-	text-decoration: none;
-	-webkit-transition-duration: 0.2s;
-    transition-duration: 0.2s;
-}
-a:hover {
-	color:red;
-}
 button.a {
-    background-color: #4CAF50;
-    border: 2px solid black;
+    background-color: #242e42;
+    border: 1.5px solid black;
     color: white;
 	width:100px;
 	padding: 5px;
     text-align: center;
     display: inline-block;
 	margin: 2px;
-	border-radius: 10px;
     -webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
     cursor: default;
 }
 button.b {
-	background-color: #4CAF50;
-    border: 2px solid black;
+	background-color: #242e42;
+    border: 1.5px solid black;
     color: white;
 	width: 70px;
     text-align: center;
     display: inline-block;
-	border-radius: 10px;
     -webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
     cursor: default;
 }
 select.b {
-	background-color: #4CAF50;
+	background-color: #242e42;
 	width:40px;
 	color: white;
 	border:0.1px solid black;
@@ -61,25 +52,24 @@ select.b {
     transition-duration: 0.2s;
 }
 select.b:hover {
-	background-color: red;
+	background-color: #291f47;
 	color: white;
 }
 button.a:hover, button.b:hover , button.done:hover  {
-	background-color: red;
+	background-color: #291f47;
     color: white;
 }
 button.done {
-	background-color: #00B89D;
+	background-color: #234790;
 }
 div.game_zone {
 	width:1000px;
-	height:855px;
-	background-color: rgb(211, 201, 190);
-	border-radius: 25px;
-	border: 5px rgb(175, 158, 143) solid;
-	color: black;
+	height:785px;
+	background-color: #4f5966;
+	border: 2px #282C33 solid;
+	color: white;
 	margin:20px;
-	padding:0.5px 10px 5px 10px;
+	padding:10px 10px 5px 10px;
 	font-family: consolas;
 	
 }
@@ -88,13 +78,48 @@ div.gsquare {
 	height:460px;
 	padding:10px;
 	margin:0.5px 10px 10px 10px;
-	background-color: rgb(193, 180, 166);
-	border-radius: 25px;
-	border: 5px rgb(175, 158, 143) solid;
+	background-color: #6d767e;
+	border: 2px #282C33 solid;
 }
 div.v {
 	float:left;
 }
 div.a {
 	float:right;
+}
+li.item:hover {
+    background-color: #111;
+}
+li.active {
+	font-weight: bold;
+	background-color: #595959;
+}
+li.mm {
+    border-right: 2px solid black;
+	float:left;
+}
+
+li.mm:last-child {
+    border-right: none;
+}
+
+li.mm a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+ul.mm {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+	border: 2px solid black;
+	border-radius: 1px;
+	
+}
+div.credits a {
+	color: #142952;
 }
