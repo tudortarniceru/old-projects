@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+	<meta charset="UTF-8"> 
+	<head>
+		<link rel="icon" href="favicon.ico" type="image/gif" sizes="16x16">
+		<title>Switch - Tudor Tarniceru</title>
+		<link rel="stylesheet" href="style.css">
+		<script>
+			var n = 10;
+			var m = 10;
+			var v = [];
+			var a = [];
+			var vc = [];
+			var d1 = [0, -1, 0, 1, 0];
+			var d2 = [0, 0, 1, 0, -1];
+			var clk = 0;
+			var stk = 0;
+			var ply = 1;
+			var done = 0;
+			var csn = 1;
+			var csm = 1;
+			function check() {
+				var ok = 1;
+				for (i = 1; i <= n; ++i) {
+					for (j = 1; j <= m; ++j) {
+						if (v[i][j] != a[i][j]) {
+							ok = 0;
+							i = n + 10;
+							j = m + 10;
+						}
+					}
+				}
+				wrt();
+				if (ok == 1) {
+					ply = 0;
+					document.getElementById("desc").innerHTML = "<b>Congratulations! You won!<b>";
+					document.getElementById("start").innerHTML = "<button class='a' id='replayg' onclick=restartg()>Replay</button>";
+					if (done == 0) {
+						stk++;
+					}
+					document.getElementById("newg").innerHTML = "<button class='a done' id='newg' onclick=start()>New Game</button>";
+					done = 1;
+				}
+				clk++;
+				document.getElementById("score").innerHTML = clk;
+				document.getElementById("streak").innerHTML = stk;
+			}
+			function init() {
+				for (i = 0; i <= n + 1; ++i) {
+					v[i] = [];
+					a[i] = [];
+					vc[i] = [];
+					for (j = 0; j <= m + 1; ++j) {
+						v[i][j] = 0;
+						a[i][j] = 0;
+						vc[i][j] = 0;
+					}
+				}
+			}
+			init();
+			function randnr() {
+				var xg = Math.random();
+				xg = xg * 10;
+				xg = Math.round(xg);
+				xg = xg % 2;
+				return xg;
+			}
+			function chg(x, y) {
+				if (ply == 1) {
+					for (k = 0; k <= 4; ++k) {
+						v[x + d1[k]][y + d2[k]]++;
+						v[x + d1[k]][y + d2[k]] %= 2;
+					}
+					check();
+				}
+			}
+			function chgv(x, y) {
+				for (k = 0; k <= 4; ++k) {
+					v[x + d1[k]][y + d2[k]]++;
+					v[x + d1[k]][y + d2[k]] %= 2;
+				}
+			}
+			function gen() {
+				for (i = 1; i <= n; ++i) {
+					for (j = 1; j <= m; ++j) {
+						var x = randnr();
+						v[i][j] = x;
+						a[i][j] = x;
+					}
+				}
+			}
+			function gena() {
+				for (i = 1; i <= n; ++i) {
+					for (j = 1; j <= m; ++j) {
+						var x = randnr();
+						if (x == 1) {
+							chgv(i, j);
+						}
+					}
+				}
+				var df = 0;
+				for (i = 1; i <= n; ++i) {
+					for (j = 1; j <= m; ++j) {
+						if (v[i][j] != a[i][j]) {
+							df++;
+						}
+					}
+				}
+				if (df == 0) {
+					gena();
+				}
+				else if (df < 2) {
+					if (n >= 3) {
+						gena();
+					}
+				}
+			}
+			function copy() {
+				for (i = 1; i <= n; ++i) {
+					for (j = 1; j <= n; ++j) {
+						vc[i][j] = v[i][j];
+					}
+				}
+			}
+			copy();
+			function wrt() {
+				document.getElementById("v").innerHTML = "";
+				for (i = 1; i <= n; ++i) {
+					for (j = 1; j <= m; ++j) {
+						if (v[i][j] == 1) {
+							document.getElementById("v").innerHTML += "<div class='block pl one' onclick=chg(" + i + "," + j +")></div>";
+						}
+						else {
+							document.getElementById("v").innerHTML += "<div class='block pl zero' onclick=chg(" + i + "," + j +")></div>";
+						}
+					}
+					document.getElementById("v").innerHTML += "<br>";
+				}
+			}
+			function wrta() {
+				document.getElementById("a").innerHTML = "";
+				for (i = 1; i <= n; ++i) {
+					for (j = 1; j <= m; ++j) {
+						if (a[i][j] == 1) {
+							document.getElementById("a").innerHTML += "<div class='block one'></div>";
+						}
+						else {
+							document.getElementById("a").innerHTML += "<div class='block zero'></div>";
+						}
+					}
+					document.getElementById("a").innerHTML += "<br>";
+				}
+			}
+			function restartg() {
+				for (i = 1; i <= n; ++i) {
+					for (j = 1; j <= m; ++j) {
+						v[i][j] = vc[i][j];
+					}
+				}
+				document.getElementById("start").innerHTML = "<button class='a' id='restartb' onclick=restartg()>Restart</button>";
+				document.getElementById("desc").innerHTML = "<b>How to play:</b> Click on a square from the left grid to change its and its neighbours colour.<br>Make both grids look the same.";
+				wrt();
+				clk = 0;
+				ply = 1;
+				document.getElementById("score").innerHTML = clk;
+				document.getElementById("streak").innerHTML = stk;
+				document.getElementById("customdim").innerHTML = "Good Luck, Have Fun!";
+				document.getElementById("customerr").innerHTML = "";
+			}
+			function start() {
+				if (done == 0) {
+					stk = 0;
+				}
+				done = 0;
+				gen();
+				gena();
+				copy();
+				wrt();
+				wrta();
+				document.getElementById("start").innerHTML = "<button class='a' id='restartg' onclick=restartg()>Restart</button>";
+				document.getElementById("newg").innerHTML = "<button class='a' id='newg' onclick=start()>New Game</button>";
+				document.getElementById("desc").innerHTML = "<b>How to play:</b> Click on a square from the left grid to change its and its neighbours colour.<br>Make both grids look the same.";
+				document.getElementById("customdim").innerHTML = "Good Luck, Have Fun!";
+				document.getElementById("customerr").innerHTML = "";
+				clk = 0;
+				ply = 1;
+				document.getElementById("score").innerHTML = clk;
+				document.getElementById("streak").innerHTML = stk;
+			}
+			function d2x2() {
+				n = 2;
+				m = 2;
+				start();
+			}
+			function d3x3() {
+				n = 3;
+				m = 3;
+				start();
+			}
+			function d4x4() {
+				n = 4;
+				m = 4;
+				start();
+			}
+			function d5x5() {
+				n = 5;
+				m = 5;
+				start();
+			}
+			function d6x6() {
+				n = 6;
+				m = 6;
+				start();
+			}
+			function d7x7() {
+				n = 7;
+				m = 7;
+				start();
+			}
+			function d8x8() {
+				n = 8;
+				m = 8;
+				start();
+			}
+			function customn() {
+				csn = document.getElementById("selectn").value;
+			}
+			function customm() {
+				csm = document.getElementById("selectm").value;
+			}
+			function submitcst() {
+				if (csn * csm < 4) {
+					document.getElementById("customerr").innerHTML = " ERROR!";
+				}
+				else {
+					n = csn;
+					m = csm;
+					start();
+				}
+			}
+			function customset() {
+				csn = 1;
+				csm = 1;
+				document.getElementById("customdim").innerHTML = "Choose the size. The grids must have at least 4 elements each. Rows: <select id='selectn' class='b' onchange='customn()'><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option></select> Collumns: <select id='selectm' class='b' onchange='customm()'><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option></select> <button id='submitcst' class='b' onclick='submitcst()'>Submit</button>";
+			}
+		</script>
+	</head>
+	<body>
+		<center>
+			<div class="game_zone">
+				<h3>Switch</h3>
+				<div class="gsquare v" id="v">
+				
+				</div>
+				<div class="gsquare a" id="a">
+				
+				</div>
+				<div style="clear:both;">
+					<p id="desc" style="height:40px; width:900px"><b>How to play:</b> Click on a square from the left grid to change its and its neighbours colour.<br>Make both grids look the same.</p>
+					<p><span id="bf_score" style="font-weight:bold; height:20px;">Score: <span id="score">-</span>&nbsp;|&nbsp;<span id="bf_streak" style="font-weight:bold; height:20px;">Win Streak: <span id="streak">-</span></p>
+					<p style="height:30px;"><span id = "start">Choose the size of the grids.</span> <span id="newg"></span></p>
+					<div><p><button class='a' id="d2x2" onclick=d2x2()>2x2</button> <button id="d3x3" class='a' onclick=d3x3()>3x3</button> <button id="d4x4" class='a' onclick=d4x4()>4x4</button> <button id="d5x5" class='a' onclick=d5x5()>5x5</button> <button id="d6x6" class='a' onclick=d6x6()>6x6</button> <button id="d7x7" class='a' onclick=d7x7()>7x7</button> <button id="d8x8" class='a' onclick=d8x8()>8x8</button> <button id="customset" class='a' onclick=customset()>Custom</button></p></div>
+					<div id="custom_zone" style="height:15px;"><span id="customdim">Good Luck, Have Fun!</span><span id="customerr" style="color:red;font-weight:bold;"></span></div>
+					<div id="credits">
+						<h4>Created by <a href="https://tudortarniceru.github.io">Tudor Ta&#774;rniceru</a></h4>
+						<h5>Alpha(&alpha;) Version</h5>
+					</div>
+				</div>
+			</div>
+		</center>
+	</body>
+</html>
