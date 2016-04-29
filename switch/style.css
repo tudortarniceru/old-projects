@@ -90,6 +90,10 @@ div.a {
 li.item:hover {
     background-color: #111;
 }
+li.item {
+	-webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+}
 li.active {
 	font-weight: bold;
 	background-color: #595959;

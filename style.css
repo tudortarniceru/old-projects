@@ -52,7 +52,10 @@ li {
 li:last-child {
     border-right: none;
 }
-
+li.item {
+	-webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+}
 li a {
     display: block;
     color: white;
