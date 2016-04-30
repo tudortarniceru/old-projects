@@ -18,6 +18,8 @@ div.showcase {
 	color:white;
 	background-color: #4f5966;
 	border: 2px solid #181B1F;
+	display: inline-block;
+	margin:10px;
 }
 div.title {
 	padding: 2px;
@@ -33,6 +35,14 @@ div.play {
 	-webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
 }
+div.soon {
+	padding: 2px;
+	font-size: 18px;
+	font-weight: bold;
+	background-color: #6d767e;
+	-webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+}
 div.players {
 	padding: 4px;
 	font-size: 14px;
@@ -40,6 +50,12 @@ div.players {
 }
 div.desc {
 	padding: 10px;
+	height:420px;
+}
+div.status {
+	padding: 4px;
+	font-size:12px;
+	margin:1px;
 }
 div.play:hover {
 	filter:brightness(125%);
@@ -68,10 +84,19 @@ div.play a{
     text-align: center;
     text-decoration: none;
 }
+div.soon a{
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
 li.item:hover {
     background-color: #111;
 }
 li.active {
 	font-weight: bold;
 	background-color: #595959;
+}
+li.soon {
+	font-weight: italic;
+	background-color:  #262626;
 }

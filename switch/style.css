@@ -98,6 +98,10 @@ li.active {
 	font-weight: bold;
 	background-color: #595959;
 }
+li.soon {
+	font-weight: italic;
+	background-color:  #262626;
+}
 li.mm {
     border-right: 2px solid black;
 	float:left;
