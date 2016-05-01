@@ -12,6 +12,7 @@ div.block {
 }
 .pl:hover {
 	filter:brightness(85%);
+	-webkit-filter:brightness(85%);
 }
 .zero {
 	background-color:rgb(177, 183, 197);
@@ -74,6 +75,7 @@ div.game_zone {
 	
 }
 div.gsquare {
+	line-height:0%;
 	width:450px;
 	height:460px;
 	padding:10px;
@@ -99,7 +101,6 @@ li.active {
 	background-color: #595959;
 }
 li.soon {
-	font-weight: italic;
 	background-color:  #262626;
 }
 li.mm {

@@ -59,6 +59,7 @@ div.status {
 }
 div.play:hover {
 	filter:brightness(125%);
+	-webkit-filter:brightness(125%);
 }
 li {
     border-right: 2px solid black;
@@ -97,6 +98,5 @@ li.active {
 	background-color: #595959;
 }
 li.soon {
-	font-weight: italic;
 	background-color:  #262626;
 }
