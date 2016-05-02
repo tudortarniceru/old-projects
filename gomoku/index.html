@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+	<meta charset="UTF-8"> 
+	<head>
+		<link rel="icon" href="favicon.ico" type="image/gif" sizes="16x16">
+		<title>Gomoku - Tudor Tarniceru</title>
+		<link rel="stylesheet" href="style.css">
+		<script>
+			var v = [];
+			var n = 15;
+			var m = 15;
+			var tr = 5;
+			var pl = 0;
+			var ply = 0;
+			var scr = [0, 0, 0];
+			function init() {
+				for (i = 0; i <= 25; ++i) {
+					v[i] = [];
+					for (j = 0; j <= 25; ++j) {
+						v[i][j] = 3;
+					}
+				}
+			}
+			function check(x, y) {
+				var d1 = [0, 0, -1, -1, -1];
+				var d2 = [0, -1, -1, 0, 1];
+				for (k = 1; k <= 4; ++k) {
+					var c = 0;
+					var a = x; var b = y;
+					while (v[a][b] == pl) {
+						c++;
+						a += d1[k];
+						b += d2[k];
+					}
+					var a = x; var b = y;
+					while (v[a][b] == pl) {
+						c++;
+						a -= d1[k];
+						b -= d2[k];
+					}
+					c--;
+					if (c >= tr) {
+						if (pl == 0) {
+							document.getElementById("p1").innerHTML = "You Won";
+							document.getElementById("p2").innerHTML = "You Lost";
+						}
+						else {
+							document.getElementById("p1").innerHTML = "You Lost";
+							document.getElementById("p2").innerHTML = "You Won";
+						}
+						scr[pl + 1]++;
+						ply = 0;
+						k = 5;
+						updatescr();
+					}
+				}
+				if (ply == 1) {
+					pl++;
+					pl %= 2;
+					checkpick();
+				}
+			}
+			function chg(i, j) {
+				if (ply == 1) {
+					v[i][j] = pl;
+					if (pl == 0) {
+						document.getElementById(i + "_" + j).innerHTML = "<div class='block a'></div>";
+					}
+					else {
+						document.getElementById(i + "_" + j).innerHTML = "<div class='block b'></div>";
+					}
+					check(i, j);
+				}
+			}
+			function updatescr() {
+				document.getElementById("score1").innerHTML = scr[1];
+				document.getElementById("score2").innerHTML = scr[2];
+			}
+			function border() {
+				for (i = 0; i <= n + 1; ++i) {
+					v[i][0] = 4;
+					v[i][m + 1] = 4;
+				}
+				for (j = 0; j <= m + 1; ++j) {
+					v[0][i] = 4;
+					v[n + 1][i] = 4;
+				}
+			}
+			function resetsc() {
+				scr[1] = 0;
+				scr[2] = 0;
+				updatescr();
+			}
+			function checkpick() {
+				if (pl == 0) {
+					document.getElementById("p1").innerHTML = "Your Turn";
+					document.getElementById("p2").innerHTML = "Opponent's Turn";
+				}
+				else {
+					document.getElementById("p1").innerHTML = "Opponent's Turn";
+					document.getElementById("p2").innerHTML = "Your Turn";
+				}
+			}
+			function start() {
+				document.getElementById("pz").innerHTML = "";
+				updatescr();
+				init();
+				border();
+				pl = 0;
+				checkpick();
+				ply = 1;
+				for (i = 1; i <= n; ++i) {
+					for (j = 1; j <= m; ++j) {
+						document.getElementById("pz").innerHTML += "<span id=" + i + "_" + j + "><div class='block z' onclick=chg(" + i + "," + j +")></div></span>";
+						}
+					document.getElementById("pz").innerHTML += "<br>";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<center>
+			<div style="background-color:black">
+				<ul class="mm">
+					<li class="mm item"><a href="https://tudortarniceru.github.io">Tudor Tarniceru</a></li>
+					<li class="mm item"><a href="https://tudortarniceru.github.io/switch/index.html">Switch</a></li>
+					<li class="mm active"><a>Gomoku<sup style="font-size:10px;color:yellow;">New</sup></a></li>
+				</ul>
+			</div>
+			<div class="game_zone">
+				<div>
+					<div id="prof1" class="profile" style="float:left;">
+						<div class="proftitle">
+							<p>Player One</p>
+						</div>
+						<div class="color" style="background-color:#9c6514;">
+							<span>Color</span>
+						</div>
+						<div class="score">
+							<span>Score: <span id="score1">-</span></span>
+						</div>
+						<div id="p1" class="picks">
+						</div>
+					</div>
+					<div class="gsquare" id="pz">
+						
+					</div>
+					<div id="prof2" class="profile" style="float:right;">
+						<div class="proftitle">
+							<p>Player Two</p>
+						</div>
+						<div class="color" style="background-color:#149c97;">
+							<span>Color</span>
+						</div>
+						<div class="score">
+							Score: <span id="score2">-</span>
+						</div>
+						<div id="p2" class="picks">
+						</div>
+					</div>
+				</div>
+				<div style="clear:both;">
+					<p id="desc" style="height:40px; width:900px;"><b>How to play:</b> Click on a free square when it is your turn to place a piece inside it. Line up 5 pieces to win.</p>
+					<p><button class="a" onclick="start()">New Game</button> <button class="a" onclick="resetsc()">Reset Scores</button></p>
+					<div style="height:15px;"><span>Good Luck, Have Fun!</span></div>
+					<div id="credits" class="credits">
+						<h4>Created by Tudor Tarniceru</h4>
+						<h5>Alpha(&alpha;) Version</h5>
+					</div>
+				</div>
+			</div>
+		</center>
+	</body>
+</html>

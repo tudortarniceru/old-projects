@@ -1,0 +1,148 @@
+body {
+	font-family: consolas;
+	background-image: url("data/background.png");
+	cursor: default;
+	color: white;
+}
+div.block {
+	width:25px;
+	height:25px;
+	display:inline-block;
+	border: 2px solid #282C33;
+}
+div.block:hover {
+	filter:brightness(85%);
+	-webkit-filter:brightness(85%);
+}
+.z {
+	background-color:#b1b7c5;
+}
+.a {
+	background-color:#9c6514;
+}
+.b {
+	background-color:#149c97;
+}
+button.a {
+    background-color: #242e42;
+    border: 1.5px solid black;
+    color: white;
+	width:100px;
+	padding: 5px;
+    text-align: center;
+    display: inline-block;
+	margin: 2px;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    cursor: default;
+}
+button.b {
+	background-color: #4CAF50;
+    border: 2px solid black;
+    color: white;
+	width: 70px;
+    text-align: center;
+    display: inline-block;
+	border-radius: 10px;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    cursor: default;
+}
+button.done {
+	background-color: #234790;
+}
+button.a:hover , button.b:hover, button.done:hover  {
+	background-color: #291f47;
+    color: white;
+}
+div.game_zone {
+	width:1000px;
+	height:785px;
+	background-color: #4f5966;
+	border: 2px #282C33 solid;
+	color: white;
+	margin:20px;
+	padding:10px 10px 5px 10px;
+	
+}
+div.gsquare {
+	display:inline-block;
+	line-height:0%;
+	width:450px;
+	height:450px;
+	padding:10px;
+	margin:4px;
+	background-color: #6d767e;
+	border: 2px #282C33 solid;
+}
+div.profile {
+	display:inline-block;
+	width:220px;
+	margin:4px;
+	background-color: #6d767e;
+	border: 2px #282C33 solid;
+}
+div.proftitle {
+	padding:2px;
+	font-size: 18px;
+	font-weight: bold;
+	background-color: #535f75;
+}
+div.score {
+	padding:3px;
+	font-size: 19px;
+	background-color: #455063;
+	
+}
+div.picks {
+	padding:2px;
+	height:20px;
+	background-color: #37474f;
+}
+div.color {
+	padding:2px;
+	height:20px;
+}
+li.item:hover {
+    background-color: #111;
+}
+li.item {
+	-webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+}
+li.active {
+	font-weight: bold;
+	background-color: #595959;
+}
+li.soon {
+	background-color:  #262626;
+}
+li.mm {
+    border-right: 2px solid black;
+	float:left;
+}
+
+li.mm:last-child {
+    border-right: none;
+}
+
+li.mm a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+ul.mm {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+	border: 2px solid black;
+	border-radius: 1px;
+	
+}
+div.credits a {
+	color: #142952;
+}
