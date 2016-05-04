@@ -19,6 +19,7 @@
 			var done = 0;
 			var csn = 1;
 			var csm = 1;
+			var dgen = 1;
 			function check() {
 				var ok = 1;
 				for (i = 1; i <= n; ++i) {
@@ -160,12 +161,15 @@
 				document.getElementById("start").innerHTML = "<button class='a' id='restartb' onclick=restartg()>Restart</button>";
 				document.getElementById("desc").innerHTML = "<b>How to play:</b> Click on a square from the left grid to change its and its neighbours colour.<br>Make both grids look the same.";
 				wrt();
+				wrta();
 				clk = 0;
 				ply = 1;
 				document.getElementById("score").innerHTML = clk;
 				document.getElementById("streak").innerHTML = stk;
 				document.getElementById("customdim").innerHTML = "Good Luck, Have Fun!";
 				document.getElementById("customerr").innerHTML = "";
+				document.getElementById("entcstcd").innerHTML = "<button class='a' id='entcstcd' onclick=entcstcd()>Enter Grid Code</button>";
+				document.getElementById("getcstcd").innerHTML = "<button class='a' id='getcstcd' onclick=getcstcd()>Get Grid Code</button>";
 			}
 			function start() {
 				if (done == 0) {
@@ -179,6 +183,8 @@
 				wrta();
 				document.getElementById("start").innerHTML = "<button class='a' id='restartg' onclick=restartg()>Restart</button>";
 				document.getElementById("newg").innerHTML = "<button class='a' id='newg' onclick=start()>New Game</button>";
+				document.getElementById("entcstcd").innerHTML = "<button class='a' id='entcstcd' onclick=entcstcd()>Enter Grid Code</button>";
+				document.getElementById("getcstcd").innerHTML = "<button class='a' id='getcstcd' onclick=getcstcd()>Get Grid Code</button>";
 				document.getElementById("desc").innerHTML = "<b>How to play:</b> Click on a square from the left grid to change its and its neighbours colour.<br>Make both grids look the same.";
 				document.getElementById("customdim").innerHTML = "Good Luck, Have Fun!";
 				document.getElementById("customerr").innerHTML = "";
@@ -243,6 +249,67 @@
 				csm = 1;
 				document.getElementById("customdim").innerHTML = "Choose the size. The grids must have at least 4 elements each. Rows: <select id='selectn' class='b' onchange='customn()'><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option></select> Collumns: <select id='selectm' class='b' onchange='customm()'><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option></select> <button id='submitcst' class='b' onclick='submitcst()'>Submit</button>";
 			}
+			function getcstcd() {
+				document.getElementById("entcstcd").innerHTML = "<button class='a' id='entcstcd' onclick=entcstcd()>Enter Grid Code</button>";
+				var code = "";
+				code = "" + n + m;
+				for (i = 1; i <= n; ++i) {
+					for (j = 1; j <= m; ++j) {
+						code += "" + v[i][j];
+						code += "" + a[i][j];
+					}
+				}
+				document.getElementById("customdim").innerHTML = "The grid code has been written inside the box below the two grids.";
+				document.getElementById("customerr").innerHTML = "";
+				document.getElementById("desc").innerHTML = "<textarea readonly noresize class='code'>" + code + "</textarea>";
+			}
+			function chkcstcd() {
+				var cd = document.getElementById("codesbm").value;
+				var bn = 0;
+				if (cd[0] >= '2' && cd[0] <= '8' && cd[1] >= '2' && cd[1] <= '8') {
+					bn = 1;
+				}
+				var leng = (cd[0] - '0') * (cd[1] - '0');
+				if (leng < 4) {
+					bn = 0;
+				}
+				if (leng * 2 + 2 != cd.length) {
+					bn = 0;
+				}
+				if (bn == 1) {
+					for (i = 2; i < cd.length; ++i) {
+						if (cd[i] != '1' && cd[i] != '0') {
+							bn = 0;
+						}
+					}
+				}
+				if (bn == 1) {
+					n = (cd[0] - '0');
+					m = (cd[1] - '0');
+					ct = 1;
+					for (i = 1; i <= n; ++i) {
+						for (j = 1; j <= m; ++j) {
+							vc[i][j] = cd[++ct] - '0';
+							a[i][j] = cd[++ct] - '0';
+						}
+					}
+					if (done == 0) {
+						stk = 0;
+						document.getElementById("streak").innerHTML = stk;
+					}
+					done = 1;
+					document.getElementById("newg").innerHTML = "<button class='a done' id='newg' onclick=start()>New Game</button>";
+					restartg();
+				}
+				else {
+					document.getElementById("customerr").innerHTML = " ERROR!";
+				}
+			}
+			function entcstcd() {
+				document.getElementById("desc").innerHTML = "<textarea id='codesbm' maxlength='130' noresize class='code'></textarea>";
+				document.getElementById("customdim").innerHTML = "Enter the custom grid code inside the box below the two grids. Not all codes guarantee a solution.";
+				document.getElementById("entcstcd").innerHTML = "<button class='a' id='entcstcd' onclick=chkcstcd()>Play Grid Code</button>";
+			}
 		</script>
 	</head>
 	<body>
@@ -264,12 +331,12 @@
 				<div style="clear:both;">
 					<p id="desc" style="height:40px; width:900px"><b>How to play:</b> Click on a square from the left grid to change its and its neighbours colour.<br>Make both grids look the same.</p>
 					<p><span id="bf_score" style="font-weight:bold; height:20px;">Score: <span id="score">-</span>&nbsp;|&nbsp;<span id="bf_streak" style="font-weight:bold; height:20px;">Win Streak: <span id="streak">-</span></p>
-					<p style="height:30px;"><span id = "start">Choose the size of the grids.</span> <span id="newg"></span></p>
+					<p style="height:30px;"><span id = "start">Choose the size of the grids.</span> <span id="newg"></span> <span id="entcstcd"><span class="entcstcd" onclick="entcstcd();"></span></span> <span id="getcstcd"></span></p>
 					<div><p><button class='a' id="d2x2" onclick=d2x2()>2x2</button> <button id="d3x3" class='a' onclick=d3x3()>3x3</button> <button id="d4x4" class='a' onclick=d4x4()>4x4</button> <button id="d5x5" class='a' onclick=d5x5()>5x5</button> <button id="d6x6" class='a' onclick=d6x6()>6x6</button> <button id="d7x7" class='a' onclick=d7x7()>7x7</button> <button id="d8x8" class='a' onclick=d8x8()>8x8</button> <button id="customset" class='a' onclick=customset()>Custom</button></p></div>
 					<div id="custom_zone" style="height:15px;"><span id="customdim">Good Luck, Have Fun!</span><span id="customerr" style="color:#d24646;font-weight:bold;"></span></div>
 					<div id="credits" class="credits">
 						<h4>Created by Tudor Tarniceru</h4>
-						<h5>Alpha(&alpha;) Version</h5>
+						<h5>Beta(&beta;) Version</h5>
 					</div>
 				</div>
 			</div>
