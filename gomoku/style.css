@@ -27,7 +27,7 @@ button.a {
     background-color: #242e42;
     border: 1.5px solid black;
     color: white;
-	width:100px;
+	min-width:108px;
 	padding: 5px;
     text-align: center;
     display: inline-block;
@@ -37,16 +37,31 @@ button.a {
     cursor: default;
 }
 button.b {
-	background-color: #4CAF50;
-    border: 2px solid black;
+	background-color: #242e42;
+    border: 1.5px solid black;
     color: white;
-	width: 70px;
+	min-width: 70px;
     text-align: center;
     display: inline-block;
-	border-radius: 10px;
     -webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
     cursor: default;
+}
+select.b {
+	background-color: #242e42;
+	width:45px;
+	color: white;
+	border:0.1px solid black;
+	-webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+}
+select.b:hover {
+	background-color: #291f47;
+	color: white;
+}
+button.a:hover, button.b:hover , button.done:hover  {
+	background-color: #291f47;
+    color: white;
 }
 button.done {
 	background-color: #234790;
@@ -57,7 +72,7 @@ button.a:hover , button.b:hover, button.done:hover  {
 }
 div.game_zone {
 	width:1000px;
-	height:785px;
+	height:755px;
 	background-color: #4f5966;
 	border: 2px #282C33 solid;
 	color: white;

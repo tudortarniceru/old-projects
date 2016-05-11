@@ -7,12 +7,18 @@
 		<link rel="stylesheet" href="style.css">
 		<script>
 			var v = [];
-			var n = 15;
-			var m = 15;
-			var tr = 5;
+			var n = 0;
+			var m = 0;
+			var tr = 0;
 			var pl = 0;
 			var ply = 0;
 			var scr = [0, 0, 0];
+			var lc = 0;
+			var ll = 0;
+			var und = 0;
+			var csn = 0;
+			var csm = 0;
+			var csp = 0;
 			function init() {
 				for (i = 0; i <= 25; ++i) {
 					v[i] = [];
@@ -24,6 +30,10 @@
 			function check(x, y) {
 				var d1 = [0, 0, -1, -1, -1];
 				var d2 = [0, -1, -1, 0, 1];
+				ll = x;
+				lc = y;
+				und = 1;
+				checkund();
 				for (k = 1; k <= 4; ++k) {
 					var c = 0;
 					var a = x; var b = y;
@@ -51,6 +61,8 @@
 						scr[pl + 1]++;
 						ply = 0;
 						k = 5;
+						und = 0;
+						checkund();
 						updatescr();
 					}
 				}
@@ -101,20 +113,92 @@
 					document.getElementById("p2").innerHTML = "Your Turn";
 				}
 			}
+			function checkund() {
+				if (und == 0) {
+					document.getElementById("undo").innerHTML = "<button class='done a' onclick='undo()'>Undo</button>";
+				}
+				else {
+					document.getElementById("undo").innerHTML = "<button class='a' onclick='undo()'>Undo</button>";
+				}
+			}
 			function start() {
+				document.getElementById("control").innerHTML = '<p><button class="a" onclick="start()">New Game</button> <button class="a" onclick="resetsc()">Reset Scores</button> <span id="undo"><button class="a" onclick="undo()">Undo</button></span></p>';
 				document.getElementById("pz").innerHTML = "";
+				document.getElementById("customdim").innerHTML = "Good Luck, Have Fun!";
+				document.getElementById("customerr").innerHTML = "";
 				updatescr();
 				init();
 				border();
 				pl = 0;
 				checkpick();
 				ply = 1;
+				und = 1;
+				checkund();
 				for (i = 1; i <= n; ++i) {
 					for (j = 1; j <= m; ++j) {
 						document.getElementById("pz").innerHTML += "<span id=" + i + "_" + j + "><div class='block z' onclick=chg(" + i + "," + j +")></div></span>";
 						}
 					document.getElementById("pz").innerHTML += "<br>";
 				}
+			}
+			function undo() {
+				if (und == 1) {
+					v[ll][lc] = 0;
+					pl++;
+					pl %= 2;
+					und = 0;
+					checkund();
+					document.getElementById(ll + "_" + lc).innerHTML = "<div class='block z' onclick=chg(" + ll + "," + lc +")></div>";
+					checkpick();
+				}
+			}
+			function tictactoe() {
+				n = 3;
+				m = 3;
+				tr = 3;
+				start();
+			}
+			function gomoku() {
+				n = 15;
+				m = 15;
+				tr = 5;
+				start();
+			}
+			function customn() {
+				csn = document.getElementById("selectn").value;
+			}
+			function customm() {
+				csm = document.getElementById("selectm").value;
+			}
+			function customp() {
+				csp = document.getElementById("selectp").value;
+			}
+			function submitcst() {
+				var minn = 0;
+				csn = parseInt(csn);
+				csm = parseInt(csm);
+				csp = parseInt(csp);
+				if (csn > csm) {
+					minn = csn;
+				}
+				else {
+					minn = csm;
+				}
+				if (csp > minn) {
+					document.getElementById("customerr").innerHTML = " ERROR!";
+				}
+				else {
+					n = csn;
+					m = csm;
+					tr = csp;
+					start();
+				}
+			}
+			function customset() {
+				csn = 3;
+				csm = 3;
+				csp = 3;
+				document.getElementById("customdim").innerHTML = "Choose the settings. Pieces: <select id='selectp' class='b' onchange='customp()'><option value=3>3</option><option value=4>4</option><option value=5>5</option></select> Rows: <select id='selectn' class='b' onchange='customn()'><option value=3>3</option><option value=4>4</option><option value=5>5</option><option value=6>6</option><option value=7>7</option><option value=8>8</option><option value=9>9</option><option value=10>10</option><option value=11>11</option><option value=12>12</option><option value=13>13</option><option value=14>14</option><option value=15>15</option></select> Collumns: <select id='selectm' class='b' onchange='customm()'><option value=3>3</option><option value=4>4</option><option value=5>5</option><option value=6>6</option><option value=7>7</option><option value=8>8</option><option value=9>9</option><option value=10>10</option><option value=11>11</option><option value=12>12</option><option value=13>13</option><option value=14>14</option><option value=15>15</option></select> <button id='submitcst' class='b' onclick='submitcst()'>Submit</button>";
 			}
 		</script>
 	</head>
@@ -124,7 +208,7 @@
 				<ul class="mm">
 					<li class="mm item"><a href="https://tudortarniceru.github.io">Tudor Tarniceru</a></li>
 					<li class="mm item"><a href="https://tudortarniceru.github.io/switch/index.html">Switch</a></li>
-					<li class="mm active"><a>Gomoku<sup style="font-size:10px;color:yellow;">New</sup></a></li>
+					<li class="mm active"><a>InRows<sup style="font-size:10px;color:yellow;">New</sup></a></li>
 				</ul>
 			</div>
 			<div class="game_zone">
@@ -161,8 +245,9 @@
 				</div>
 				<div style="clear:both;">
 					<p id="desc" style="height:40px; width:900px;"><b>How to play:</b> Click on a free square when it is your turn to place a piece inside it. Line up 5 pieces to win.</p>
-					<p><button class="a" onclick="start()">New Game</button> <button class="a" onclick="resetsc()">Reset Scores</button></p>
-					<div style="height:15px;"><span>Good Luck, Have Fun!</span></div>
+					<p style="height:30px;" id="control">Choose the game settings</p>
+					<div></p><button class='a' id="ticttactoe" onclick=tictactoe()>Tic-Tac-Toe</button> <button class='a' id="gomoku" onclick=gomoku()>Gomoku</button> <button class='a' id="customset" onclick=customset()>Custom</button></p></div>
+					<div style="height:15px;" id="custom_zone"><span id="customdim">Good Luck, Have Fun!</span><span id="customerr" style="color:#d24646;font-weight:bold;"></span></div>
 					<div id="credits" class="credits">
 						<h4>Created by Tudor Tarniceru</h4>
 						<h5>Alpha(&alpha;) Version</h5>
