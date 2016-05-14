@@ -114,6 +114,17 @@ div.picks {
 	height:20px;
 	background-color: #37474f;
 }
+div.lastpickstitle {
+	padding:2px;
+	font-size: 17px;
+	background-color: #535f75;
+}
+div.lastpicks{
+	padding:4px;
+	font-size: 16px;
+	background-color: #455063;
+	height:290px;
+}
 div.color {
 	padding:2px;
 	height:20px;

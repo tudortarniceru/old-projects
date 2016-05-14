@@ -3,7 +3,7 @@
 	<meta charset="UTF-8"> 
 	<head>
 		<link rel="icon" href="favicon.ico" type="image/gif" sizes="16x16">
-		<title>Gomoku - Tudor Tarniceru</title>
+		<title>InRows - Tudor Tarniceru</title>
 		<link rel="stylesheet" href="style.css">
 		<script>
 			var v = [];
@@ -19,6 +19,38 @@
 			var csn = 0;
 			var csm = 0;
 			var csp = 0;
+			var pcs = 0;
+			var lstl = 8;
+			var lst1 = 0;
+			var lst2 = 0;
+			var lst = [0, 0, 0, 0, 0];
+			function initlst() {
+				lst1 = 0;
+				lst2 = 0;
+				for (i = 0; i <= 5; ++i) {
+					lst[i] = [];
+					for (j = 0; j <= lstl + 5; ++j) {
+						lst[i][j] = 0;
+					}
+				}
+			}
+			initlst();
+			function updatelst() {
+				document.getElementById("lst1").innerHTML = "";
+				document.getElementById("lst2").innerHTML = "";
+				if (lst1 > 0) {
+					document.getElementById("lst1").innerHTML = "<p><b>Row: " + lst[1][1] + " | Collumn: " + lst[2][1] + "</b></p>";
+					for (i = 2; i <= lst1; ++i) {
+						document.getElementById("lst1").innerHTML += "<p>Row: " + lst[1][i] + " | Collumn: " + lst[2][i] + "</p>";
+					}
+				}
+				if (lst2 > 0) {
+					document.getElementById("lst2").innerHTML = "<p><b>Row: " + lst[3][1] + " | Collumn: " + lst[4][1] + "</b></p>";
+					for (i = 2; i <= lst2; ++i) {
+						document.getElementById("lst2").innerHTML += "<p>Row: " + lst[3][i] + " | Collumn: " + lst[4][i] + "</p>";
+					}
+				}
+			}
 			function init() {
 				for (i = 0; i <= 25; ++i) {
 					v[i] = [];
@@ -70,17 +102,50 @@
 					pl++;
 					pl %= 2;
 					checkpick();
+					if (pcs == n * m) {
+						und = 0;
+						ply = 0;
+						checkund();
+						document.getElementById("p1").innerHTML = "Draw";
+						document.getElementById("p2").innerHTML = "Draw";
+					}
 				}
 			}
 			function chg(i, j) {
 				if (ply == 1) {
 					v[i][j] = pl;
 					if (pl == 0) {
+						lst1++;
+						if (lst1 > lstl) {
+							lst1 = lstl;
+						}
+						for (k = lst1; k >= 1; --k) {
+							lst[1][k + 1] = lst[1][k];
+							lst[2][k + 1] = lst[2][k];
+						}
+						lst[1][1] = i;
+						lst[2][1] = j;
+					}
+					if (pl == 1) {
+						lst2++;
+						if (lst2 > lstl) {
+							lst2 = lstl;
+						}
+						for (k = lst2; k >= 1; --k) {
+							lst[3][k + 1] = lst[3][k];
+							lst[4][k + 1] = lst[4][k];
+						}
+						lst[3][1] = i;
+						lst[4][1] = j;
+					}
+					updatelst();
+					if (pl == 0) {
 						document.getElementById(i + "_" + j).innerHTML = "<div class='block a'></div>";
 					}
 					else {
 						document.getElementById(i + "_" + j).innerHTML = "<div class='block b'></div>";
 					}
+					pcs++;
 					check(i, j);
 				}
 			}
@@ -128,12 +193,16 @@
 				document.getElementById("customerr").innerHTML = "";
 				updatescr();
 				init();
+				initlst();
 				border();
 				pl = 0;
 				checkpick();
 				ply = 1;
 				und = 1;
+				pcs = 0;
 				checkund();
+				initlst();
+				updatelst();
 				for (i = 1; i <= n; ++i) {
 					for (j = 1; j <= m; ++j) {
 						document.getElementById("pz").innerHTML += "<span id=" + i + "_" + j + "><div class='block z' onclick=chg(" + i + "," + j +")></div></span>";
@@ -144,8 +213,28 @@
 			function undo() {
 				if (und == 1) {
 					v[ll][lc] = 0;
+					pcs--;
 					pl++;
 					pl %= 2;
+					if (pl == 0) {
+						for (i = 1; i <= lst1; ++i) {
+							lst[1][i] = lst[1][i + 1];
+							lst[2][i] = lst[2][i + 1];
+						}
+						if (lst1 < lstl) {
+							lst1--;
+						}
+					}
+					if (pl == 1) {
+						for (i = 1; i <= lst2; ++i) {
+							lst[3][i] = lst[3][i + 1];
+							lst[4][i] = lst[4][i + 1];
+						}
+						if (lst2 < lstl) {
+							lst2--;
+						}
+					}
+					updatelst();
 					und = 0;
 					checkund();
 					document.getElementById(ll + "_" + lc).innerHTML = "<div class='block z' onclick=chg(" + ll + "," + lc +")></div>";
@@ -198,7 +287,7 @@
 				csn = 3;
 				csm = 3;
 				csp = 3;
-				document.getElementById("customdim").innerHTML = "Choose the settings. Pieces: <select id='selectp' class='b' onchange='customp()'><option value=3>3</option><option value=4>4</option><option value=5>5</option></select> Rows: <select id='selectn' class='b' onchange='customn()'><option value=3>3</option><option value=4>4</option><option value=5>5</option><option value=6>6</option><option value=7>7</option><option value=8>8</option><option value=9>9</option><option value=10>10</option><option value=11>11</option><option value=12>12</option><option value=13>13</option><option value=14>14</option><option value=15>15</option></select> Collumns: <select id='selectm' class='b' onchange='customm()'><option value=3>3</option><option value=4>4</option><option value=5>5</option><option value=6>6</option><option value=7>7</option><option value=8>8</option><option value=9>9</option><option value=10>10</option><option value=11>11</option><option value=12>12</option><option value=13>13</option><option value=14>14</option><option value=15>15</option></select> <button id='submitcst' class='b' onclick='submitcst()'>Submit</button>";
+				document.getElementById("customdim").innerHTML = "Choose the settings. Pieces: <select id='selectp' class='b' onchange='customp()'><option value=3>3</option><option value=4>4</option><option value=5>5</option><option value=6>6</option></select> Rows: <select id='selectn' class='b' onchange='customn()'><option value=3>3</option><option value=4>4</option><option value=5>5</option><option value=6>6</option><option value=7>7</option><option value=8>8</option><option value=9>9</option><option value=10>10</option><option value=11>11</option><option value=12>12</option><option value=13>13</option><option value=14>14</option><option value=15>15</option></select> Collumns: <select id='selectm' class='b' onchange='customm()'><option value=3>3</option><option value=4>4</option><option value=5>5</option><option value=6>6</option><option value=7>7</option><option value=8>8</option><option value=9>9</option><option value=10>10</option><option value=11>11</option><option value=12>12</option><option value=13>13</option><option value=14>14</option><option value=15>15</option></select> <button id='submitcst' class='b' onclick='submitcst()'>Submit</button>";
 			}
 		</script>
 	</head>
@@ -208,38 +297,60 @@
 				<ul class="mm">
 					<li class="mm item"><a href="https://tudortarniceru.github.io">Tudor Tarniceru</a></li>
 					<li class="mm item"><a href="https://tudortarniceru.github.io/switch/index.html">Switch</a></li>
-					<li class="mm active"><a>InRows<sup style="font-size:10px;color:yellow;">New</sup></a></li>
+					<li class="mm active"><a>InRows</a></li>
 				</ul>
 			</div>
 			<div class="game_zone">
 				<div>
-					<div id="prof1" class="profile" style="float:left;">
-						<div class="proftitle">
-							<p>Player One</p>
+					<div style="float:left;">
+						<div id="prof1" class="profile">
+							<div class="proftitle">
+								<p>Player One</p>
+							</div>
+							<div class="color" style="background-color:#9c6514;">
+								<span>Color</span>
+							</div>
+							<div class="score">
+								<span>Score: <span id="score1">-</span></span>
+							</div>
+							<div id="p1" class="picks">
+							</div>
 						</div>
-						<div class="color" style="background-color:#9c6514;">
-							<span>Color</span>
-						</div>
-						<div class="score">
-							<span>Score: <span id="score1">-</span></span>
-						</div>
-						<div id="p1" class="picks">
+						<br>
+						<div id="picks1" class="profile">
+							<div class="lastpickstitle">
+								<span>Last Picks</span>
+							</div>
+							<div id="lst1" class="lastpicks">
+								
+							</div>
 						</div>
 					</div>
 					<div class="gsquare" id="pz">
 						
 					</div>
-					<div id="prof2" class="profile" style="float:right;">
-						<div class="proftitle">
-							<p>Player Two</p>
+					<div style="float:right;">
+						<div id="prof2" class="profile">
+							<div class="proftitle">
+								<p>Player Two</p>
+							</div>
+							<div class="color" style="background-color:#149c97;">
+								<span>Color</span>
+							</div>
+							<div class="score">
+								Score: <span id="score2">-</span>
+							</div>
+							<div id="p2" class="picks">
+							</div>
 						</div>
-						<div class="color" style="background-color:#149c97;">
-							<span>Color</span>
-						</div>
-						<div class="score">
-							Score: <span id="score2">-</span>
-						</div>
-						<div id="p2" class="picks">
+						<br>
+						<div id="picks2" class="profile">
+							<div class="lastpickstitle">
+								<span>Last Picks</span>
+							</div>
+							<div id="lst2" class="lastpicks">
+							
+							</div>
 						</div>
 					</div>
 				</div>
