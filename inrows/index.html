@@ -192,6 +192,7 @@
 				document.getElementById("pz").innerHTML = "";
 				document.getElementById("customdim").innerHTML = "Good Luck, Have Fun!";
 				document.getElementById("customerr").innerHTML = "";
+				document.getElementById("lineuppc").innerHTML = "(" + tr + ")";
 				updatescr();
 				init();
 				initlst();
@@ -387,7 +388,7 @@
 					</div>
 				</div>
 				<div style="clear:both;">
-					<p id="desc" style="height:40px; width:900px;"><b>How to play:</b> Click on a free square when it is your turn to place a piece inside it. Line up 5 pieces to win. Click on a player's name to change it.</p>
+					<p id="desc" style="height:40px; width:900px;"><b>How to play:</b> Click on a free square when it is your turn to place a piece inside it. Line up the selected number of pieces <span id="lineuppc"></span> to win. Click on a player's name to change it.</p>
 					<p style="height:30px;" id="control">Choose the game settings</p>
 					<div></p><button class='a' id="ticttactoe" onclick=tictactoe()>Tic-Tac-Toe</button> <button class='a' id="gomoku" onclick=gomoku()>Gomoku</button> <button class='a' id="customset" onclick=customset()>Custom</button></p></div>
 					<div style="height:15px;" id="custom_zone"><span id="customdim">Good Luck, Have Fun!</span><span id="customerr" style="color:#d24646;font-weight:bold;"></span></div>
