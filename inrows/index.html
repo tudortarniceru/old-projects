@@ -24,6 +24,7 @@
 			var lst1 = 0;
 			var lst2 = 0;
 			var lst = [0, 0, 0, 0, 0];
+			var pln = [0, "Player One", "Player Two"];
 			function initlst() {
 				lst1 = 0;
 				lst2 = 0;
@@ -284,10 +285,41 @@
 				}
 			}
 			function customset() {
+				clsset();
 				csn = 3;
 				csm = 3;
 				csp = 3;
 				document.getElementById("customdim").innerHTML = "Choose the settings. Pieces: <select id='selectp' class='b' onchange='customp()'><option value=3>3</option><option value=4>4</option><option value=5>5</option><option value=6>6</option></select> Rows: <select id='selectn' class='b' onchange='customn()'><option value=3>3</option><option value=4>4</option><option value=5>5</option><option value=6>6</option><option value=7>7</option><option value=8>8</option><option value=9>9</option><option value=10>10</option><option value=11>11</option><option value=12>12</option><option value=13>13</option><option value=14>14</option><option value=15>15</option></select> Collumns: <select id='selectm' class='b' onchange='customm()'><option value=3>3</option><option value=4>4</option><option value=5>5</option><option value=6>6</option><option value=7>7</option><option value=8>8</option><option value=9>9</option><option value=10>10</option><option value=11>11</option><option value=12>12</option><option value=13>13</option><option value=14>14</option><option value=15>15</option></select> <button id='submitcst' class='b' onclick='submitcst()'>Submit</button>";
+			}
+			function clsset() {
+				document.getElementById("customdim").innerHTML = "Good Luck, Have Fun!";
+				document.getElementById("customerr").innerHTML = "";
+			}
+			function chgnm(plr2) {
+				var name = document.getElementById("pln").value;
+				var checkname = 0;
+				for (i = 0; i < name.length; ++i) {
+					if (name[i] != ' ') {
+						checkname = 1;
+						i = name.length + 5;
+					}
+				}
+				if (checkname == 1) {
+					console.log(name + " " + plr2);
+					pln[plr2] = name;
+					document.getElementById("pl1n").innerHTML = pln[1];
+					document.getElementById("pl2n").innerHTML = pln[2];
+					document.getElementById("plnmchg").innerHTML = pln[plr2];
+					clsset();
+				}
+				else {
+					document.getElementById("customerr").innerHTML = "ERROR";
+				}
+			}
+			function settings(plr) {
+				clsset();
+				var namechange = "<input class='b' id='pln' maxlength='16'> <button class='b' onclick=chgnm(" + plr + ")>Change</button>";
+				document.getElementById("customdim").innerHTML = "Choose the settings for <span id='plnmchg'>" + pln[plr] + "</span>. Name: " + namechange + " ";
 			}
 		</script>
 	</head>
@@ -305,7 +337,7 @@
 					<div style="float:left;">
 						<div id="prof1" class="profile">
 							<div class="proftitle">
-								<p>Player One</p>
+								<p id="pl1n" onclick="settings(1)">Player One</p>
 							</div>
 							<div class="color" style="background-color:#9c6514;">
 								<span>Color</span>
@@ -332,7 +364,7 @@
 					<div style="float:right;">
 						<div id="prof2" class="profile">
 							<div class="proftitle">
-								<p>Player Two</p>
+								<p id="pl2n" onclick="settings(2)">Player Two</p>
 							</div>
 							<div class="color" style="background-color:#149c97;">
 								<span>Color</span>
@@ -355,7 +387,7 @@
 					</div>
 				</div>
 				<div style="clear:both;">
-					<p id="desc" style="height:40px; width:900px;"><b>How to play:</b> Click on a free square when it is your turn to place a piece inside it. Line up 5 pieces to win.</p>
+					<p id="desc" style="height:40px; width:900px;"><b>How to play:</b> Click on a free square when it is your turn to place a piece inside it. Line up 5 pieces to win. Click on a player's name to change it.</p>
 					<p style="height:30px;" id="control">Choose the game settings</p>
 					<div></p><button class='a' id="ticttactoe" onclick=tictactoe()>Tic-Tac-Toe</button> <button class='a' id="gomoku" onclick=gomoku()>Gomoku</button> <button class='a' id="customset" onclick=customset()>Custom</button></p></div>
 					<div style="height:15px;" id="custom_zone"><span id="customdim">Good Luck, Have Fun!</span><span id="customerr" style="color:#d24646;font-weight:bold;"></span></div>

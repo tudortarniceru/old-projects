@@ -47,6 +47,17 @@ button.b {
     transition-duration: 0.2s;
     cursor: default;
 }
+input.b {
+	background-color: #242e42;
+    border: 1.5px solid black;
+    color: white;
+	min-width: 70px;
+    text-align: center;
+    display: inline-block;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    cursor: default;
+}
 select.b {
 	background-color: #242e42;
 	width:45px;
@@ -59,7 +70,7 @@ select.b:hover {
 	background-color: #291f47;
 	color: white;
 }
-button.a:hover, button.b:hover , button.done:hover  {
+button.a:hover, button.b:hover , button.done:hover {
 	background-color: #291f47;
     color: white;
 }
