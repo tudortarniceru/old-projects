@@ -29,8 +29,8 @@
 			var clsav = [0, 1, 1, 0, 0, 0, 0];
 			var cl1 = 1;
 			var cl2 = 2;
-			var cltg = 0;
 			var clnr = 7;
+			var plset = 0;
 			function initlst() {
 				lst1 = 0;
 				lst2 = 0;
@@ -323,7 +323,7 @@
 					document.getElementById("customerr").innerHTML = "ERROR";
 				}
 			}
-			function chgcol(plr2) {
+			function chgcol(plr2, cltg) {
 				var clt = cltg;
 				if (plr2 == 1) {
 					clsav[cl1] = 0;
@@ -346,21 +346,20 @@
 				document.getElementById("customerr").innerHTML = "";
 			}
 			function showcols() {
-				cltg = 0;
 				document.getElementById("customcol").innerHTML = "";
 				for (i = 1; i <= clnr; ++i) {
 					if (clsav[i] == 0) {
-						document.getElementById("customcol").innerHTML += "<button class='c' style='background-color:" + cls[i] + "; color:" + cls[i] + ";' onclick='cltg=" + i + "'>.</button> ";
+						document.getElementById("customcol").innerHTML += "<button class='c' style='background-color:" + cls[i] + "; color:" + cls[i] + ";' onclick='chgcol(" + plset + "," + i + ")'>.</button> ";
 					}
 				}
 				document.getElementById("customcol").innerHTML += " ";
 			}
 			function settings(plr) {
+				plset = plr;
 				clsset();
 				var namechange = "<input class='b' id='pln' maxlength='16'> ";
 				document.getElementById("customdim").innerHTML = "<span id='plnmchg'>" + pln[plr] + "</span>'s settings. Name: " + namechange + "<button class='b' onclick='chgnm(" + plr + ")'>Change</button> | Color: ";
 				showcols();
-				document.getElementById("custombt").innerHTML = "<button class='b' onclick='chgcol(" + plr + ")'>Select</button>";
 				document.getElementById("custombt").innerHTML += " <button class='b' onclick='clsset()'>Close</button> ";
 			}
 		</script>
