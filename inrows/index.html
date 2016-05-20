@@ -25,6 +25,12 @@
 			var lst2 = 0;
 			var lst = [0, 0, 0, 0, 0];
 			var pln = [0, "Player One", "Player Two"];
+			var cls = [0, "#9c6514", "#159e9e", "#7c159e", "#159e15", "#9e9e15", "#9e1515"];
+			var clsav = [0, 1, 1, 0, 0, 0, 0];
+			var cl1 = 1;
+			var cl2 = 2;
+			var cltg = 0;
+			var clnr = 7;
 			function initlst() {
 				lst1 = 0;
 				lst2 = 0;
@@ -141,10 +147,10 @@
 					}
 					updatelst();
 					if (pl == 0) {
-						document.getElementById(i + "_" + j).innerHTML = "<div class='block a'></div>";
+						document.getElementById(i + "_" + j).innerHTML = "<div class='block' style=background-color:" + cls[cl1] + ";></div>";
 					}
 					else {
-						document.getElementById(i + "_" + j).innerHTML = "<div class='block b'></div>";
+						document.getElementById(i + "_" + j).innerHTML = "<div class='block' style=background-color:" + cls[cl2] + ";></div>";
 					}
 					pcs++;
 					check(i, j);
@@ -190,9 +196,8 @@
 			function start() {
 				document.getElementById("control").innerHTML = '<p><button class="a" onclick="start()">New Game</button> <button class="a" onclick="resetsc()">Reset Scores</button> <span id="undo"><button class="a" onclick="undo()">Undo</button></span></p>';
 				document.getElementById("pz").innerHTML = "";
-				document.getElementById("customdim").innerHTML = "Good Luck, Have Fun!";
-				document.getElementById("customerr").innerHTML = "";
 				document.getElementById("lineuppc").innerHTML = "(" + tr + ")";
+				clsset();
 				updatescr();
 				init();
 				initlst();
@@ -200,21 +205,21 @@
 				pl = 0;
 				checkpick();
 				ply = 1;
-				und = 1;
+				und = 0;
 				pcs = 0;
 				checkund();
 				initlst();
 				updatelst();
 				for (i = 1; i <= n; ++i) {
 					for (j = 1; j <= m; ++j) {
-						document.getElementById("pz").innerHTML += "<span id=" + i + "_" + j + "><div class='block z' onclick=chg(" + i + "," + j +")></div></span>";
+						document.getElementById("pz").innerHTML += "<span id=" + i + "_" + j + "><div id=d" + i + "_" + j + " class='block z' onclick=chg(" + i + "," + j +")></div></span>";
 						}
 					document.getElementById("pz").innerHTML += "<br>";
 				}
 			}
 			function undo() {
 				if (und == 1) {
-					v[ll][lc] = 0;
+					v[ll][lc] = 3;
 					pcs--;
 					pl++;
 					pl %= 2;
@@ -294,6 +299,8 @@
 			}
 			function clsset() {
 				document.getElementById("customdim").innerHTML = "Good Luck, Have Fun!";
+				document.getElementById("customcol").innerHTML = "";
+				document.getElementById("custombt").innerHTML = "";
 				document.getElementById("customerr").innerHTML = "";
 			}
 			function chgnm(plr2) {
@@ -306,21 +313,55 @@
 					}
 				}
 				if (checkname == 1) {
-					console.log(name + " " + plr2);
 					pln[plr2] = name;
 					document.getElementById("pl1n").innerHTML = pln[1];
 					document.getElementById("pl2n").innerHTML = pln[2];
 					document.getElementById("plnmchg").innerHTML = pln[plr2];
-					clsset();
+					document.getElementById("customerr").innerHTML = "";
 				}
 				else {
 					document.getElementById("customerr").innerHTML = "ERROR";
 				}
 			}
+			function chgcol(plr2) {
+				var clt = cltg;
+				if (plr2 == 1) {
+					clsav[cl1] = 0;
+					cl1 = clt;
+				}
+				else {
+					clsav[cl2] = 0;
+					cl2 = clt;
+				}
+				clsav[clt] = 1;
+				document.getElementById("color" + plr2).style.backgroundColor = cls[clt];
+				for (i = 1; i <= n; ++i) {
+					for (j = 1; j <= m; ++j) {
+						if (v[i][j] == plr2 - 1) {
+							document.getElementById(i + "_" + j).innerHTML = "<div class='block' style='background-color:" + cls[clt] + ";'></div>";
+						}
+					}
+				}
+				showcols();
+				document.getElementById("customerr").innerHTML = "";
+			}
+			function showcols() {
+				cltg = 0;
+				document.getElementById("customcol").innerHTML = "";
+				for (i = 1; i <= clnr; ++i) {
+					if (clsav[i] == 0) {
+						document.getElementById("customcol").innerHTML += "<button class='c' style='background-color:" + cls[i] + "; color:" + cls[i] + ";' onclick='cltg=" + i + "'>.</button> ";
+					}
+				}
+				document.getElementById("customcol").innerHTML += " ";
+			}
 			function settings(plr) {
 				clsset();
-				var namechange = "<input class='b' id='pln' maxlength='16'> <button class='b' onclick=chgnm(" + plr + ")>Change</button>";
-				document.getElementById("customdim").innerHTML = "Choose the settings for <span id='plnmchg'>" + pln[plr] + "</span>. Name: " + namechange + " ";
+				var namechange = "<input class='b' id='pln' maxlength='16'> ";
+				document.getElementById("customdim").innerHTML = "<span id='plnmchg'>" + pln[plr] + "</span>'s settings. Name: " + namechange + "<button class='b' onclick='chgnm(" + plr + ")'>Change</button> | Color: ";
+				showcols();
+				document.getElementById("custombt").innerHTML = "<button class='b' onclick='chgcol(" + plr + ")'>Select</button>";
+				document.getElementById("custombt").innerHTML += " <button class='b' onclick='clsset()'>Close</button> ";
 			}
 		</script>
 	</head>
@@ -340,7 +381,7 @@
 							<div class="proftitle">
 								<p id="pl1n" onclick="settings(1)">Player One</p>
 							</div>
-							<div class="color" style="background-color:#9c6514;">
+							<div id="color1" class="color" style="background-color:#9c6514;">
 								<span>Color</span>
 							</div>
 							<div class="score">
@@ -367,7 +408,7 @@
 							<div class="proftitle">
 								<p id="pl2n" onclick="settings(2)">Player Two</p>
 							</div>
-							<div class="color" style="background-color:#149c97;">
+							<div id="color2" class="color" style="background-color:#149c97;">
 								<span>Color</span>
 							</div>
 							<div class="score">
@@ -388,10 +429,10 @@
 					</div>
 				</div>
 				<div style="clear:both;">
-					<p id="desc" style="height:40px; width:900px;"><b>How to play:</b> Click on a free square when it is your turn to place a piece inside it. Line up the selected number of pieces <span id="lineuppc"></span> to win. Click on a player's name to change it.</p>
+					<p id="desc" style="height:40px; width:900px;"><b>How to play:</b> Click on a free square when it is your turn to place a piece inside it. Line up the selected number of pieces <span id="lineuppc"></span> to win. Click on a player's name to change its settings.</p>
 					<p style="height:30px;" id="control">Choose the game settings</p>
 					<div></p><button class='a' id="ticttactoe" onclick=tictactoe()>Tic-Tac-Toe</button> <button class='a' id="gomoku" onclick=gomoku()>Gomoku</button> <button class='a' id="customset" onclick=customset()>Custom</button></p></div>
-					<div style="height:15px;" id="custom_zone"><span id="customdim">Good Luck, Have Fun!</span><span id="customerr" style="color:#d24646;font-weight:bold;"></span></div>
+					<div style="height:15px;" id="custom_zone"><span id="customdim">Good Luck, Have Fun!</span><span id="customcol"></span><span id="custombt"></span><span id="customerr" style="color:#d24646;font-weight:bold;"></span></div>
 					<div id="credits" class="credits">
 						<h4>Created by Tudor Tarniceru</h4>
 						<h5>Alpha(&alpha;) Version</h5>
