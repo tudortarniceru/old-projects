@@ -20,6 +20,8 @@
 			var csn = 1;
 			var csm = 1;
 			var dgen = 1;
+			var tme = 0;
+			var tmec = 0;
 			function check() {
 				var ok = 1;
 				for (i = 1; i <= n; ++i) {
@@ -34,7 +36,11 @@
 				wrt();
 				if (ok == 1) {
 					ply = 0;
-					document.getElementById("desc").innerHTML = "<b>Congratulations! You won!<b>";
+					tmec = new Date().getTime() / 1000;
+					tmec = tmec - tme;
+					tmec = tmec * 100;
+					tmec = Math.floor(tmec);
+					document.getElementById("desc").innerHTML = "<b>Congratulations! You won in " + tmec / 100 + " seconds!<b>";
 					document.getElementById("start").innerHTML = "<button class='a' id='replayg' onclick=restartg()>Replay</button>";
 					if (done == 0) {
 						stk++;
@@ -68,6 +74,9 @@
 			}
 			function chg(x, y) {
 				if (ply == 1) {
+					if (tme == 0) {
+						tme = new Date().getTime() / 1000;
+					}
 					for (k = 0; k <= 4; ++k) {
 						v[x + d1[k]][y + d2[k]]++;
 						v[x + d1[k]][y + d2[k]] %= 2;
@@ -153,6 +162,7 @@
 				}
 			}
 			function restartg() {
+				tme = 0;
 				for (i = 1; i <= n; ++i) {
 					for (j = 1; j <= m; ++j) {
 						v[i][j] = vc[i][j];
@@ -172,6 +182,7 @@
 				document.getElementById("getcstcd").innerHTML = "<button class='a' id='getcstcd' onclick=getcstcd()>Get Grid Code</button>";
 			}
 			function start() {
+				tme = 0;
 				if (done == 0) {
 					stk = 0;
 				}
@@ -316,9 +327,9 @@
 		<center>
 			<div style="background-color:black">
 				<ul class="mm">
-					<li class="mm item"><a href="https://tudortarniceru.github.io">Tudor Tarniceru</a></li>
+					<li class="mm item"><a href="../index.html">Tudor Tarniceru</a></li>
 					<li class="mm active"><a>Switch</a></li>
-					<li class="mm item"><a href="https://tudortarniceru.github.io/inrows/index.html">InRows</a></li>
+					<li class="mm item"><a href="../inrows/index.html">InRows</a></li>
 				</ul>
 			</div>
 			<div class="game_zone">
