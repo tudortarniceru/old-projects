@@ -192,6 +192,8 @@
 				copy();
 				wrt();
 				wrta();
+				document.getElementById("v").style.display = "table-cell";
+				document.getElementById("a").style.display = "table-cell";
 				document.getElementById("start").innerHTML = "<button class='a' id='restartg' onclick=restartg()>Restart</button>";
 				document.getElementById("newg").innerHTML = "<button class='a' id='newg' onclick=start()>New Game</button>";
 				document.getElementById("entcstcd").innerHTML = "<button class='a' id='entcstcd' onclick=entcstcd()>Enter Grid Code</button>";
@@ -333,11 +335,13 @@
 				</ul>
 			</div>
 			<div class="game_zone">
-				<div class="gsquare v" id="v">
-				
+				<div class="gsquare v">
+					<div class="outborder" id="v" style="display:none;">
+					</div>
 				</div>
-				<div class="gsquare a" id="a">
-				
+				<div class="gsquare a">
+					<div class="outborder" id="a" style="display:none;">
+					</div>
 				</div>
 				<div style="clear:both;">
 					<p id="desc" style="height:40px; width:900px"><b>How to play:</b> Click on a square from the left grid to change its and its neighbours colour.<br>Make both grids look the same.</p>

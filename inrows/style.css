@@ -9,6 +9,15 @@ div.block {
 	height:25px;
 	display:inline-block;
 	border: 2px solid #282C33;
+	align-content:center;
+	position: relative;
+}
+span.ord {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateY(-50%) translateX(-50%);
+	font-size:75%;
 }
 div.block:hover {
 	filter:brightness(85%);
@@ -120,6 +129,9 @@ div.gsquare {
 	margin:4px;
 	background-color: #6d767e;
 	border: 2px #282C33 solid;
+}
+div.outborder {
+	border: 2px solid #282C33;
 }
 div.profile {
 	display:inline-block;

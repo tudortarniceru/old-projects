@@ -31,6 +31,7 @@
 			var cl2 = 2;
 			var clnr = 10;
 			var plset = 0;
+			var ordx = [0], ordy = [0], ordt = 0;
 			function initlst() {
 				lst1 = 0;
 				lst2 = 0;
@@ -103,6 +104,7 @@
 						und = 0;
 						checkund();
 						updatescr();
+						showord();
 					}
 				}
 				if (ply == 1) {
@@ -115,11 +117,20 @@
 						checkund();
 						document.getElementById("p1").innerHTML = "Draw";
 						document.getElementById("p2").innerHTML = "Draw";
+						showord();
 					}
+				}
+			}
+			function showord() {
+				for (i = 1; i <= ordt; ++i) {
+					document.getElementById("d" + ordx[i] + "_" + ordy[i]).innerHTML = "<span class='ord'><b>" + i + "</b></span>";
 				}
 			}
 			function chg(i, j) {
 				if (ply == 1) {
+					ordt++;
+					ordx[ordt] = i;
+					ordy[ordt] = j;
 					v[i][j] = pl;
 					if (pl == 0) {
 						lst1++;
@@ -147,10 +158,10 @@
 					}
 					updatelst();
 					if (pl == 0) {
-						document.getElementById(i + "_" + j).innerHTML = "<div class='block' style=background-color:" + cls[cl1] + ";></div>";
+						document.getElementById(i + "_" + j).innerHTML = "<div id='d" + i + "_" + j + "' class='block' style=background-color:" + cls[cl1] + ";></div>";
 					}
 					else {
-						document.getElementById(i + "_" + j).innerHTML = "<div class='block' style=background-color:" + cls[cl2] + ";></div>";
+						document.getElementById(i + "_" + j).innerHTML = "<div id='d" + i + "_" + j + "' class='block' style=background-color:" + cls[cl2] + ";></div>";
 					}
 					pcs++;
 					check(i, j);
@@ -194,6 +205,8 @@
 				}
 			}
 			function start() {
+				ordt = 0;
+				document.getElementById("pz").style.display = "table-cell";
 				document.getElementById("control").innerHTML = '<p><button class="a" onclick="start()">New Game</button> <button class="a" onclick="resetsc()">Reset Scores</button> <span id="undo"><button class="a" onclick="undo()">Undo</button></span></p>';
 				document.getElementById("pz").innerHTML = "";
 				document.getElementById("lineuppc").innerHTML = "(" + tr + ")";
@@ -212,12 +225,13 @@
 				updatelst();
 				for (i = 1; i <= n; ++i) {
 					for (j = 1; j <= m; ++j) {
-						document.getElementById("pz").innerHTML += "<span id=" + i + "_" + j + "><div id=d" + i + "_" + j + " class='block z' onclick=chg(" + i + "," + j +")></div></span>";
+						document.getElementById("pz").innerHTML += "<span id=" + i + "_" + j + "><div id='d" + i + "_" + j + "' class='block z' onclick=chg(" + i + "," + j +")></div></span>";
 						}
 					document.getElementById("pz").innerHTML += "<br>";
 				}
 			}
 			function undo() {
+				ordt--;
 				if (und == 1) {
 					v[ll][lc] = 3;
 					pcs--;
@@ -244,7 +258,7 @@
 					updatelst();
 					und = 0;
 					checkund();
-					document.getElementById(ll + "_" + lc).innerHTML = "<div class='block z' onclick=chg(" + ll + "," + lc +")></div>";
+					document.getElementById(ll + "_" + lc).innerHTML = "<div id='d" + i + "_" + j + "' class='block z' onclick=chg(" + ll + "," + lc +")></div>";
 					checkpick();
 				}
 			}
@@ -338,12 +352,15 @@
 				for (i = 1; i <= n; ++i) {
 					for (j = 1; j <= m; ++j) {
 						if (v[i][j] == plr2 - 1) {
-							document.getElementById(i + "_" + j).innerHTML = "<div class='block' style='background-color:" + cls[clt] + ";'></div>";
+							document.getElementById(i + "_" + j).innerHTML = "<div id='d" + i + "_" + j + "' class='block' style='background-color:" + cls[clt] + ";'></div>";
 						}
 					}
 				}
 				showcols();
 				document.getElementById("customerr").innerHTML = "";
+				if (ply == 0) {
+					showord();
+				}
 			}
 			function showcols() {
 				document.getElementById("customcol").innerHTML = "";
@@ -399,8 +416,9 @@
 							</div>
 						</div>
 					</div>
-					<div class="gsquare" id="pz">
-						
+					<div class="gsquare">
+						<div class="outborder" id="pz" style="display:none;">
+						</div>
 					</div>
 					<div style="float:right;">
 						<div id="prof2" class="profile">

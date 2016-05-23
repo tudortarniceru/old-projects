@@ -83,6 +83,9 @@ div.gsquare {
 	background-color: #6d767e;
 	border: 2px #282C33 solid;
 }
+div.outborder {
+	border: 2px solid #282C33;
+}
 textarea.code {
 	height:40px; 
 	width:900px; 
