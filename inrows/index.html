@@ -25,7 +25,7 @@
 			var lst2 = 0;
 			var lst = [0, 0, 0, 0, 0];
 			var pln = [0, "Player One", "Player Two"];
-			var cls = [0, "#9c6514", "#159e9e", "#159e15", "#9e9e15", "#DC143C", "#7B68EE", "#DB7093", "#F4A460", "#2653a0"];
+			var cls = [0, "#9c6514", "#159e9e", "#159e15", "#9e9e15", "#DC143C", "#7B68EE", "#DB7093", "#f29340", "#2653a0"];
 			var clsav = [0, 1, 1, 0, 0, 0, 0, 0, 0, 0];
 			var cl1 = 1;
 			var cl2 = 2;
@@ -47,15 +47,15 @@
 				document.getElementById("lst1").innerHTML = "";
 				document.getElementById("lst2").innerHTML = "";
 				if (lst1 > 0) {
-					document.getElementById("lst1").innerHTML = "<p><b>Row: " + lst[1][1] + " | Collumn: " + lst[2][1] + "</b></p>";
+					document.getElementById("lst1").innerHTML = "<p><b>Row: " + lst[1][1] + " | Column: " + lst[2][1] + "</b></p>";
 					for (i = 2; i <= lst1; ++i) {
-						document.getElementById("lst1").innerHTML += "<p>Row: " + lst[1][i] + " | Collumn: " + lst[2][i] + "</p>";
+						document.getElementById("lst1").innerHTML += "<p>Row: " + lst[1][i] + " | Column: " + lst[2][i] + "</p>";
 					}
 				}
 				if (lst2 > 0) {
-					document.getElementById("lst2").innerHTML = "<p><b>Row: " + lst[3][1] + " | Collumn: " + lst[4][1] + "</b></p>";
+					document.getElementById("lst2").innerHTML = "<p><b>Row: " + lst[3][1] + " | Column: " + lst[4][1] + "</b></p>";
 					for (i = 2; i <= lst2; ++i) {
-						document.getElementById("lst2").innerHTML += "<p>Row: " + lst[3][i] + " | Collumn: " + lst[4][i] + "</p>";
+						document.getElementById("lst2").innerHTML += "<p>Row: " + lst[3][i] + " | Column: " + lst[4][i] + "</p>";
 					}
 				}
 			}
@@ -126,6 +126,12 @@
 					document.getElementById("d" + ordx[i] + "_" + ordy[i]).innerHTML = "<span class='ord'><b>" + i + "</b></span>";
 				}
 			}
+			function showlast() {
+				if (ordt >= 2) {
+					document.getElementById("d" + ordx[ordt - 1] + "_" + ordy[ordt - 1]).innerHTML = "";
+				}
+				document.getElementById("d" + ordx[ordt] + "_" + ordy[ordt]).innerHTML = "<span class='ord'><b>L</b></span>"
+			}
 			function chg(i, j) {
 				if (ply == 1) {
 					ordt++;
@@ -164,6 +170,7 @@
 						document.getElementById(i + "_" + j).innerHTML = "<div id='d" + i + "_" + j + "' class='block' style=background-color:" + cls[cl2] + ";></div>";
 					}
 					pcs++;
+					showlast();
 					check(i, j);
 				}
 			}
@@ -260,6 +267,7 @@
 					checkund();
 					document.getElementById(ll + "_" + lc).innerHTML = "<div id='d" + i + "_" + j + "' class='block z' onclick=chg(" + ll + "," + lc +")></div>";
 					checkpick();
+					showlast();
 				}
 			}
 			function tictactoe() {
@@ -309,7 +317,7 @@
 				csn = 3;
 				csm = 3;
 				csp = 3;
-				document.getElementById("customdim").innerHTML = "Choose the settings. Pieces: <select id='selectp' class='b' onchange='customp()'><option value=3>3</option><option value=4>4</option><option value=5>5</option><option value=6>6</option></select> Rows: <select id='selectn' class='b' onchange='customn()'><option value=3>3</option><option value=4>4</option><option value=5>5</option><option value=6>6</option><option value=7>7</option><option value=8>8</option><option value=9>9</option><option value=10>10</option><option value=11>11</option><option value=12>12</option><option value=13>13</option><option value=14>14</option><option value=15>15</option></select> Collumns: <select id='selectm' class='b' onchange='customm()'><option value=3>3</option><option value=4>4</option><option value=5>5</option><option value=6>6</option><option value=7>7</option><option value=8>8</option><option value=9>9</option><option value=10>10</option><option value=11>11</option><option value=12>12</option><option value=13>13</option><option value=14>14</option><option value=15>15</option></select> <button id='submitcst' class='b' onclick='submitcst()'>Submit</button>";
+				document.getElementById("customdim").innerHTML = "Choose the settings. Pieces: <select id='selectp' class='b' onchange='customp()'><option value=3>3</option><option value=4>4</option><option value=5>5</option><option value=6>6</option></select> Rows: <select id='selectn' class='b' onchange='customn()'><option value=3>3</option><option value=4>4</option><option value=5>5</option><option value=6>6</option><option value=7>7</option><option value=8>8</option><option value=9>9</option><option value=10>10</option><option value=11>11</option><option value=12>12</option><option value=13>13</option><option value=14>14</option><option value=15>15</option></select> Columns: <select id='selectm' class='b' onchange='customm()'><option value=3>3</option><option value=4>4</option><option value=5>5</option><option value=6>6</option><option value=7>7</option><option value=8>8</option><option value=9>9</option><option value=10>10</option><option value=11>11</option><option value=12>12</option><option value=13>13</option><option value=14>14</option><option value=15>15</option></select> <button id='submitcst' class='b' onclick='submitcst()'>Submit</button>";
 			}
 			function clsset() {
 				document.getElementById("customdim").innerHTML = "Good Luck, Have Fun!";
@@ -360,6 +368,9 @@
 				document.getElementById("customerr").innerHTML = "";
 				if (ply == 0) {
 					showord();
+				}
+				else {
+					showlast();
 				}
 			}
 			function showcols() {
