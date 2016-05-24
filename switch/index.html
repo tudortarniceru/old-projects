@@ -85,6 +85,48 @@
 					check();
 				}
 			}
+			function mma(x, y) {
+				for (k = 0; k <= 4; ++k) {
+					a[x + d1[k]][y + d2[k]]++;
+					a[x + d1[k]][y + d2[k]] %= 2;
+				}
+				mwrta();
+			}
+			function mmv(x, y) {
+				for (k = 0; k <= 4; ++k) {
+					v[x + d1[k]][y + d2[k]]++;
+					v[x + d1[k]][y + d2[k]] %= 2;
+				}
+				mwrtv();
+			}
+			function mwrtv() {
+				document.getElementById("v").innerHTML = "";
+				for (i = 1; i <= n; ++i) {
+					for (j = 1; j <= m; ++j) {
+						if (v[i][j] == 1) {
+							document.getElementById("v").innerHTML += "<div class='block pl one' onclick=mmv(" + i + "," + j +")></div>";
+						}
+						else {
+							document.getElementById("v").innerHTML += "<div class='block pl zero' onclick=mmv(" + i + "," + j +")></div>";
+						}
+					}
+					document.getElementById("v").innerHTML += "<br>";
+				}
+			}
+			function mwrta() {
+				document.getElementById("a").innerHTML = "";
+				for (i = 1; i <= n; ++i) {
+					for (j = 1; j <= m; ++j) {
+						if (a[i][j] == 1) {
+							document.getElementById("a").innerHTML += "<div class='block pl one' onclick=mma(" + i + "," + j +")></div>";
+						}
+						else {
+							document.getElementById("a").innerHTML += "<div class='block pl zero' onclick=mma(" + i + "," + j +")></div>";
+						}
+					}
+					document.getElementById("a").innerHTML += "<br>";
+				}
+			}
 			function chgv(x, y) {
 				for (k = 0; k <= 4; ++k) {
 					v[x + d1[k]][y + d2[k]]++;
@@ -161,7 +203,6 @@
 					}
 					document.getElementById("a").innerHTML += "<br>";
 				}
-				console.log("c");
 			}
 			function restartg() {
 				tme = 0;
@@ -186,7 +227,7 @@
 				document.getElementById("customerr").innerHTML = "";
 				document.getElementById("entcstcd").innerHTML = "<button class='a' id='entcstcd' onclick=entcstcd()>Enter Grid Code</button>";
 				document.getElementById("getcstcd").innerHTML = "<button class='a' id='getcstcd' onclick=getcstcd()>Get Grid Code</button>";
-				console.log("b");
+				document.getElementById("mapmaker").innerHTML = "<button class='a' id='mapmaker' onclick=mapmaker()>Grid Maker</button>";
 			}
 			function start() {
 				clearintro();
@@ -206,6 +247,7 @@
 				document.getElementById("newg").innerHTML = "<button class='a' id='newg' onclick=start()>New Game</button>";
 				document.getElementById("entcstcd").innerHTML = "<button class='a' id='entcstcd' onclick=entcstcd()>Enter Grid Code</button>";
 				document.getElementById("getcstcd").innerHTML = "<button class='a' id='getcstcd' onclick=getcstcd()>Get Grid Code</button>";
+				document.getElementById("mapmaker").innerHTML = "<button class='a' id='mapmaker' onclick=mapmaker()>Grid Maker</button>";
 				document.getElementById("desc").innerHTML = "<b>How to play:</b> Click on a square from the left grid to change its and its neighbours colour.<br>Make both grids look the same.";
 				document.getElementById("customdim").innerHTML = "Good Luck, Have Fun!";
 				document.getElementById("customerr").innerHTML = "";
@@ -292,7 +334,7 @@
 			function chkcstcd() {
 				var cd = document.getElementById("codesbm").value;
 				var bn = 0;
-				if (cd[0] >= '2' && cd[0] <= '8' && cd[1] >= '2' && cd[1] <= '8') {
+				if (cd[0] >= '1' && cd[0] <= '8' && cd[1] >= '1' && cd[1] <= '8') {
 					bn = 1;
 				}
 				var leng = (cd[0] - '0') * (cd[1] - '0');
@@ -324,7 +366,6 @@
 						document.getElementById("streak").innerHTML = stk;
 					}
 					done = 1;
-					console.log("a");
 					document.getElementById("newg").innerHTML = "<button class='a done' id='newg' onclick=start()>New Game</button>";
 					restartg();
 				}
@@ -336,10 +377,50 @@
 				document.getElementById("desc").innerHTML = "<textarea id='codesbm' maxlength='130' noresize class='code'></textarea>";
 				document.getElementById("customdim").innerHTML = "Enter the custom grid code inside the box below the two grids. Not all codes guarantee a solution.";
 				document.getElementById("entcstcd").innerHTML = "<button class='a' id='entcstcd' onclick=chkcstcd()>Play Grid Code</button>";
-				clearintro();
+				clearintro2();
 			}
 			function clearintro() {
 				document.getElementById("intro").innerHTML = "";
+				document.getElementById("intro2").innerHTML = "";
+				document.getElementById("mapmaker").innerHTML = "<button class='a' id='mapmaker' onclick=mapmaker()>Grid Maker</button>";
+				document.getElementById("entcstcd").innerHTML = "<button class='a' id='entcstcd' onclick=entcstcd()>Enter Grid Code</button>";
+			}
+			function clearintro2() {
+				document.getElementById("intro").innerHTML = "";
+				document.getElementById("intro2").innerHTML = "";
+				document.getElementById("mapmaker").innerHTML = "<button class='a' id='mapmaker' onclick=mapmaker()>Grid Maker</button>";
+			}
+			function startedit() {
+				if (csn * csm < 4) {
+					document.getElementById("customerr").innerHTML = " ERROR!";
+				}
+				else {
+					document.getElementById("start").innerHTML = "";
+					document.getElementById("customdim").innerHTML = "Good Luck, Have Fun!";
+					document.getElementById("customerr").innerHTML = "";
+					document.getElementById("getcstcd").innerHTML = "<button class='a' id='getcstcd' onclick=getcstcd()>Get Grid Code</button>";
+					document.getElementById("desc").innerHTML = "<b>How to use:</b> Click on a square from a grid to change its and its neighbours colour.<br>Click the 'Get Grid Code' button to get the grid code.";
+					n = csn;
+					m = csm;
+					wrtsize();
+					for (i = 1; i <= n; ++i) {
+						for (j = 1; j <= m; ++j) {
+							v[i][j] = 0;
+							a[i][j] = 0;
+						}
+					}
+					document.getElementById("v").style.display = "table-cell";
+					document.getElementById("a").style.display = "table-cell";
+					mwrtv();
+					mwrta();
+				}
+			}
+			function mapmaker() {
+				csn = 1;
+				csm = 1;
+				clearintro();
+				document.getElementById("desc").innerHTML = "<b>How to play:</b> Click on a square from the left grid to change its and its neighbours colour.<br>Make both grids look the same.";
+				document.getElementById("customdim").innerHTML = "Choose the size of the grids. Each must have at least 4 elements. Rows: <select id='selectn' class='b' onchange='customn()'><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option></select> Columns: <select id='selectm' class='b' onchange='customm()'><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option></select> <button id='submitcst' class='b' onclick='startedit()'>Create</button>";
 			}
 		</script>
 	</head>
@@ -364,12 +445,12 @@
 				<div style="clear:both;">
 					<p id="desc" style="height:40px; width:900px"><b>How to play:</b> Click on a square from the left grid to change its and its neighbours colour.<br>Make both grids look the same.</p>
 					<p><span id="bf_score" style="font-weight:bold; height:20px;">Score: <span id="score">-</span></span>&nbsp;|&nbsp;<span id="bf_streak" style="font-weight:bold; height:20px;">Win Streak: <span id="streak">-</span></span>&nbsp;|&nbsp;<span id="bf_size" style="font-weight:bold; height:20px;">Size: <span id="sizen">-</span><span style="font-size:75%;"> x </span><span id="sizem">-</span></span></p>
-					<p style="height:30px;"><span id="intro">Choose the size of the grids or</span><span id = "start"></span> <span id="newg"></span> <span id="entcstcd"><span class="entcstcd" onclick="entcstcd();"><span style="color:#b9bcda; cursor:pointer;">enter a grid code</span></span></span> <span id="getcstcd"></span></p>
+					<p style="height:30px;"><span id="intro">Choose the size of the grids or</span><span id = "start"></span> <span id="newg"></span> <span id="entcstcd"><span class="entcstcd" onclick="entcstcd();"><span style="color:#b9bcda; cursor:pointer;">enter a grid code</span></span></span> <span id="intro2"> or </span><span id="getcstcd"></span> <span id="mapmaker"><span class="mapmaker" onclick="mapmaker();"><span style="color:#b9bcda; cursor:pointer;">open the 'Grid Maker'</span></span></span></p>
 					<div><p><button class='a' id="d2x2" onclick=d2x2()>2x2</button> <button id="d3x3" class='a' onclick=d3x3()>3x3</button> <button id="d4x4" class='a' onclick=d4x4()>4x4</button> <button id="d5x5" class='a' onclick=d5x5()>5x5</button> <button id="d6x6" class='a' onclick=d6x6()>6x6</button> <button id="d7x7" class='a' onclick=d7x7()>7x7</button> <button id="d8x8" class='a' onclick=d8x8()>8x8</button> <button id="customset" class='a' onclick=customset()>Custom</button></p></div>
 					<div id="custom_zone" style="height:15px;"><span id="customdim">Good Luck, Have Fun!</span><span id="customerr" style="color:#d24646;font-weight:bold;"></span></div>
 					<div id="credits" class="credits">
 						<h4>Created by Tudor Tarniceru</h4>
-						<h5>Beta(&beta;) Version</h5>
+						<h5>Version 1.0.0</h5>
 					</div>
 				</div>
 			</div>
