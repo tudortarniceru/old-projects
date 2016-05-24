@@ -51,6 +51,7 @@
 				clk++;
 				document.getElementById("score").innerHTML = clk;
 				document.getElementById("streak").innerHTML = stk;
+				wrtsize();
 			}
 			function init() {
 				for (i = 0; i <= n + 1; ++i) {
@@ -160,6 +161,7 @@
 					}
 					document.getElementById("a").innerHTML += "<br>";
 				}
+				console.log("c");
 			}
 			function restartg() {
 				tme = 0;
@@ -170,18 +172,24 @@
 				}
 				document.getElementById("start").innerHTML = "<button class='a' id='restartb' onclick=restartg()>Restart</button>";
 				document.getElementById("desc").innerHTML = "<b>How to play:</b> Click on a square from the left grid to change its and its neighbours colour.<br>Make both grids look the same.";
+				document.getElementById("v").style.display = "table-cell";
+				document.getElementById("a").style.display = "table-cell";
 				wrt();
 				wrta();
 				clk = 0;
 				ply = 1;
+				clearintro();
 				document.getElementById("score").innerHTML = clk;
 				document.getElementById("streak").innerHTML = stk;
+				wrtsize();
 				document.getElementById("customdim").innerHTML = "Good Luck, Have Fun!";
 				document.getElementById("customerr").innerHTML = "";
 				document.getElementById("entcstcd").innerHTML = "<button class='a' id='entcstcd' onclick=entcstcd()>Enter Grid Code</button>";
 				document.getElementById("getcstcd").innerHTML = "<button class='a' id='getcstcd' onclick=getcstcd()>Get Grid Code</button>";
+				console.log("b");
 			}
 			function start() {
+				clearintro();
 				tme = 0;
 				if (done == 0) {
 					stk = 0;
@@ -205,6 +213,11 @@
 				ply = 1;
 				document.getElementById("score").innerHTML = clk;
 				document.getElementById("streak").innerHTML = stk;
+				wrtsize();
+			}
+			function wrtsize() {
+				document.getElementById("sizen").innerHTML = n;
+				document.getElementById("sizem").innerHTML = m;
 			}
 			function d2x2() {
 				n = 2;
@@ -311,6 +324,7 @@
 						document.getElementById("streak").innerHTML = stk;
 					}
 					done = 1;
+					console.log("a");
 					document.getElementById("newg").innerHTML = "<button class='a done' id='newg' onclick=start()>New Game</button>";
 					restartg();
 				}
@@ -322,6 +336,10 @@
 				document.getElementById("desc").innerHTML = "<textarea id='codesbm' maxlength='130' noresize class='code'></textarea>";
 				document.getElementById("customdim").innerHTML = "Enter the custom grid code inside the box below the two grids. Not all codes guarantee a solution.";
 				document.getElementById("entcstcd").innerHTML = "<button class='a' id='entcstcd' onclick=chkcstcd()>Play Grid Code</button>";
+				clearintro();
+			}
+			function clearintro() {
+				document.getElementById("intro").innerHTML = "";
 			}
 		</script>
 	</head>
@@ -345,8 +363,8 @@
 				</div>
 				<div style="clear:both;">
 					<p id="desc" style="height:40px; width:900px"><b>How to play:</b> Click on a square from the left grid to change its and its neighbours colour.<br>Make both grids look the same.</p>
-					<p><span id="bf_score" style="font-weight:bold; height:20px;">Score: <span id="score">-</span>&nbsp;|&nbsp;<span id="bf_streak" style="font-weight:bold; height:20px;">Win Streak: <span id="streak">-</span></p>
-					<p style="height:30px;"><span id = "start">Choose the size of the grids.</span> <span id="newg"></span> <span id="entcstcd"><span class="entcstcd" onclick="entcstcd();"></span></span> <span id="getcstcd"></span></p>
+					<p><span id="bf_score" style="font-weight:bold; height:20px;">Score: <span id="score">-</span></span>&nbsp;|&nbsp;<span id="bf_streak" style="font-weight:bold; height:20px;">Win Streak: <span id="streak">-</span></span>&nbsp;|&nbsp;<span id="bf_size" style="font-weight:bold; height:20px;">Size: <span id="sizen">-</span><span style="font-size:75%;"> x </span><span id="sizem">-</span></span></p>
+					<p style="height:30px;"><span id="intro">Choose the size of the grids or</span><span id = "start"></span> <span id="newg"></span> <span id="entcstcd"><span class="entcstcd" onclick="entcstcd();"><span style="color:#b9bcda; cursor:pointer;">enter a grid code</span></span></span> <span id="getcstcd"></span></p>
 					<div><p><button class='a' id="d2x2" onclick=d2x2()>2x2</button> <button id="d3x3" class='a' onclick=d3x3()>3x3</button> <button id="d4x4" class='a' onclick=d4x4()>4x4</button> <button id="d5x5" class='a' onclick=d5x5()>5x5</button> <button id="d6x6" class='a' onclick=d6x6()>6x6</button> <button id="d7x7" class='a' onclick=d7x7()>7x7</button> <button id="d8x8" class='a' onclick=d8x8()>8x8</button> <button id="customset" class='a' onclick=customset()>Custom</button></p></div>
 					<div id="custom_zone" style="height:15px;"><span id="customdim">Good Luck, Have Fun!</span><span id="customerr" style="color:#d24646;font-weight:bold;"></span></div>
 					<div id="credits" class="credits">
