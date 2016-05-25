@@ -32,6 +32,8 @@
 			var clnr = 10;
 			var plset = 0;
 			var ordx = [0], ordy = [0], ordt = 0;
+			var tme = 0, tmec = 0;;
+			var lstw = 0;
 			function initlst() {
 				lst1 = 0;
 				lst2 = 0;
@@ -67,6 +69,35 @@
 					}
 				}
 			}
+			function gtmec() {
+				tmec = new Date().getTime() / 1000;
+				tmec = tmec - tme;
+				tmec = tmec * 10;
+				tmec = Math.floor(tmec);
+			}
+			function showstats(x1) {
+				lstw = x1;
+				if (x1 == 1) {
+					var winn = pln[1] + " Won!";
+				}
+				else if (x1 == 2) {
+					var winn = pln[2] + " Won!";
+				}
+				else {
+					var winn = "Draw!";
+				}
+				var proc = ordt * 100 / (n * m);
+				var procin = proc;
+				proc *= 10;
+				proc = Math.floor(proc);
+				proc /= 10;
+				document.getElementById("desc").innerHTML = winn + " Game ended in " + tmec / 10 + " seconds.";
+				document.getElementById("desc").innerHTML += " You used " + ordt + " squares (";
+				if (proc != procin) {
+					document.getElementById("desc").innerHTML += "&#x2248 ";
+				}
+				document.getElementById("desc").innerHTML += proc + "%) from a total of " + n * m + ".";
+			}
 			function check(x, y) {
 				var d1 = [0, 0, -1, -1, -1];
 				var d2 = [0, -1, -1, 0, 1];
@@ -93,10 +124,14 @@
 						if (pl == 0) {
 							document.getElementById("p1").innerHTML = "You Won";
 							document.getElementById("p2").innerHTML = "You Lost";
+							gtmec();
+							showstats(1);
 						}
 						else {
 							document.getElementById("p1").innerHTML = "You Lost";
 							document.getElementById("p2").innerHTML = "You Won";
+							gtmec();
+							showstats(2);
 						}
 						scr[pl + 1]++;
 						ply = 0;
@@ -117,6 +152,8 @@
 						checkund();
 						document.getElementById("p1").innerHTML = "Draw";
 						document.getElementById("p2").innerHTML = "Draw";
+						gtmec();
+						showstats(3);
 						showord();
 					}
 				}
@@ -134,6 +171,9 @@
 			}
 			function chg(i, j) {
 				if (ply == 1) {
+					if (tme == 0) {
+						tme = new Date().getTime() / 1000;
+					}
 					ordt++;
 					ordx[ordt] = i;
 					ordy[ordt] = j;
@@ -213,9 +253,11 @@
 			}
 			function start() {
 				ordt = 0;
+				tme = 0;
 				document.getElementById("pz").style.display = "table-cell";
 				document.getElementById("control").innerHTML = '<p><button class="a" onclick="start()">New Game</button> <button class="a" onclick="resetsc()">Reset Scores</button> <span id="undo"><button class="a" onclick="undo()">Undo</button></span></p>';
 				document.getElementById("pz").innerHTML = "";
+				showdesc();
 				document.getElementById("lineuppc").innerHTML = "(" + tr + ")";
 				clsset();
 				updatescr();
@@ -344,6 +386,9 @@
 				else {
 					document.getElementById("customerr").innerHTML = "ERROR";
 				}
+				if (ply == 0) {
+					showstats(lstw);
+				}
 			}
 			function chgcol(plr2, cltg) {
 				var clt = cltg;
@@ -389,6 +434,9 @@
 				document.getElementById("customdim").innerHTML = "<span id='plnmchg'>" + pln[plr] + "</span>'s settings. Name: " + namechange + "<button class='b' onclick='chgnm(" + plr + ")'>Change</button> | Color: ";
 				showcols();
 				document.getElementById("custombt").innerHTML += " <button class='b' onclick='clsset()'>Close</button> ";
+			}
+			function showdesc() {
+				document.getElementById("desc").innerHTML = "<b>How to play:</b> Click on a free square when it is your turn to place a piece inside it. Line up the selected number of pieces <span id='lineuppc'></span> to win. Click on a player's name to change its settings.";
 			}
 		</script>
 	</head>
