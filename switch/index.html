@@ -315,6 +315,7 @@
 			function customset() {
 				csn = 1;
 				csm = 1;
+				clearerr();
 				document.getElementById("customdim").innerHTML = "Choose the size. The grids must have at least 4 elements each. Rows: <select id='selectn' class='b' onchange='customn()'><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option></select> Columns: <select id='selectm' class='b' onchange='customm()'><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option></select> <button id='submitcst' class='b' onclick='submitcst()'>Submit</button>";
 			}
 			function getcstcd() {
@@ -378,17 +379,23 @@
 				document.getElementById("customdim").innerHTML = "Enter the custom grid code inside the box below the two grids. Not all codes guarantee a solution.";
 				document.getElementById("entcstcd").innerHTML = "<button class='a' id='entcstcd' onclick=chkcstcd()>Play Grid Code</button>";
 				clearintro2();
+				clearerr();
 			}
 			function clearintro() {
 				document.getElementById("intro").innerHTML = "";
 				document.getElementById("intro2").innerHTML = "";
 				document.getElementById("mapmaker").innerHTML = "<button class='a' id='mapmaker' onclick=mapmaker()>Grid Maker</button>";
 				document.getElementById("entcstcd").innerHTML = "<button class='a' id='entcstcd' onclick=entcstcd()>Enter Grid Code</button>";
+				clearerr();
 			}
 			function clearintro2() {
 				document.getElementById("intro").innerHTML = "";
 				document.getElementById("intro2").innerHTML = "";
 				document.getElementById("mapmaker").innerHTML = "<button class='a' id='mapmaker' onclick=mapmaker()>Grid Maker</button>";
+				clearerr();
+			}
+			function clearerr() {
+				document.getElementById("customerr").innerHTML = "";
 			}
 			function startedit() {
 				if (csn * csm < 4) {
@@ -420,7 +427,7 @@
 				csm = 1;
 				clearintro();
 				document.getElementById("desc").innerHTML = "<b>How to play:</b> Click on a square from the left grid to change its and its neighbours colour.<br>Make both grids look the same.";
-				document.getElementById("customdim").innerHTML = "Choose the size of the grids. Each must have at least 4 elements. Rows: <select id='selectn' class='b' onchange='customn()'><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option></select> Columns: <select id='selectm' class='b' onchange='customm()'><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option></select> <button id='submitcst' class='b' onclick='startedit()'>Create</button>";
+				document.getElementById("customdim").innerHTML = "Choose the size. Each grid must have at least 4 elements. Rows: <select id='selectn' class='b' onchange='customn()'><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option></select> Columns: <select id='selectm' class='b' onchange='customm()'><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option></select> <button id='submitcst' class='b' onclick='startedit()'>Create</button>";
 			}
 		</script>
 	</head>
