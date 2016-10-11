@@ -34,6 +34,7 @@
 			var ordx = [0], ordy = [0], ordt = 0;
 			var tme = 0, tmec = 0;;
 			var lstw = 0;
+			var grav = 0, gv = [];
 			function initlst() {
 				lst1 = 0;
 				lst2 = 0;
@@ -64,6 +65,7 @@
 			function init() {
 				for (i = 0; i <= 25; ++i) {
 					v[i] = [];
+					gv[i] = 0;
 					for (j = 0; j <= 25; ++j) {
 						v[i][j] = 3;
 					}
@@ -174,6 +176,10 @@
 					if (tme == 0) {
 						tme = new Date().getTime() / 1000;
 					}
+					if (grav == 1) {
+						i = n - gv[j];
+						gv[j]++;
+					}
 					ordt++;
 					ordx[ordt] = i;
 					ordy[ordt] = j;
@@ -251,11 +257,33 @@
 					document.getElementById("undo").innerHTML = "<button class='a' onclick='undo()'>Undo</button>";
 				}
 			}
+			function gravt() {
+				grav++;
+				grav %= 2;
+				start();
+				if (grav == 0) {
+					document.getElementById("bgrav").innerHTML = '<button class="a" onclick="gravop()">Gravity</button>';
+				}
+				else {
+					document.getElementById("bgrav").innerHTML = '<button class="done a" onclick="gravop()">Gravity</button>';
+				}
+			}
+			function gravop() {
+				document.getElementById("customdim").innerHTML = "Gravity will make the pieces fall straight when placed. Gravity: ";
+				if (grav == 0) {
+					document.getElementById("customdim").innerHTML += "Off";
+				}
+				else {
+					document.getElementById("customdim").innerHTML += "On";
+				}
+				document.getElementById("customdim").innerHTML += ". <button class='b' onclick='gravt()'>Change</button> <button class='b' onclick='clsset()'>Close</button>";
+			}
+				
 			function start() {
 				ordt = 0;
 				tme = 0;
 				document.getElementById("pz").style.display = "table-cell";
-				document.getElementById("control").innerHTML = '<p><button class="a" onclick="start()">New Game</button> <button class="a" onclick="resetsc()">Reset Scores</button> <span id="undo"><button class="a" onclick="undo()">Undo</button></span></p>';
+				document.getElementById("control").innerHTML = '<p><button class="a" onclick="start()">New Game</button> <button class="a" onclick="resetsc()">Reset Scores</button> <span id="undo"><button class="a" onclick="undo()">Undo</button></span> <span id="bgrav"><button class="a" onclick="gravop()">Gravity</button></span></p>';
 				document.getElementById("pz").innerHTML = "";
 				showdesc();
 				document.getElementById("lineuppc").innerHTML = "(" + tr + ")";
@@ -283,6 +311,7 @@
 				ordt--;
 				if (und == 1) {
 					v[ll][lc] = 3;
+					gv[lc]--;
 					pcs--;
 					pl++;
 					pl %= 2;
@@ -511,7 +540,6 @@
 					<div style="height:15px;" id="custom_zone"><span id="customdim">Good Luck, Have Fun!</span><span id="customcol"></span><span id="custombt"></span><span id="customerr" style="color:#d24646;font-weight:bold;"></span></div>
 					<div id="credits" class="credits">
 						<h4>Created by Tudor Tarniceru</h4>
-						<h5>Version 1.0.0</h5>
 					</div>
 				</div>
 			</div>
