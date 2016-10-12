@@ -261,22 +261,26 @@
 				grav++;
 				grav %= 2;
 				start();
+				checkgrav();
+				
+			}
+			function checkgrav() {
 				if (grav == 0) {
 					document.getElementById("bgrav").innerHTML = '<button class="a" onclick="gravop()">Gravity</button>';
 				}
 				else {
 					document.getElementById("bgrav").innerHTML = '<button class="done a" onclick="gravop()">Gravity</button>';
 				}
-			}
+				}
 			function gravop() {
-				document.getElementById("customdim").innerHTML = "Gravity will make the pieces fall straight when placed. Gravity: ";
+				document.getElementById("customdim").innerHTML = "Gravity makes the pieces fall when placed. Changing it starts a new game. Gravity: ";
 				if (grav == 0) {
 					document.getElementById("customdim").innerHTML += "Off";
 				}
 				else {
 					document.getElementById("customdim").innerHTML += "On";
 				}
-				document.getElementById("customdim").innerHTML += ". <button class='b' onclick='gravt()'>Change</button> <button class='b' onclick='clsset()'>Close</button>";
+				document.getElementById("customdim").innerHTML += ". <button class='b' onclick='gravt()'>Toggle</button> <button class='b' onclick='clsset()'>Close</button>";
 			}
 				
 			function start() {
@@ -345,13 +349,23 @@
 				n = 3;
 				m = 3;
 				tr = 3;
+				grav = 0;
 				start();
 			}
 			function gomoku() {
 				n = 15;
 				m = 15;
 				tr = 5;
+				grav = 0;
 				start();
+			}
+			function connectf() {
+				n = 6;
+				m = 7;
+				tr = 4;
+				grav = 1;
+				start();
+				checkgrav();
 			}
 			function customn() {
 				csn = document.getElementById("selectn").value;
@@ -415,7 +429,7 @@
 				else {
 					document.getElementById("customerr").innerHTML = "ERROR";
 				}
-				if (ply == 0) {
+				if (ply == 0 && n != 0) {
 					showstats(lstw);
 				}
 			}
@@ -536,7 +550,7 @@
 				<div style="clear:both;">
 					<p id="desc" style="height:40px; width:900px;"><b>How to play:</b> Click on a free square when it is your turn to place a piece inside it. Line up the selected number of pieces <span id="lineuppc"></span> to win. Click on a player's name to change its settings.</p>
 					<p style="height:30px;" id="control">Choose the game settings</p>
-					<div></p><button class='a' id="ticttactoe" onclick=tictactoe()>Tic-Tac-Toe</button> <button class='a' id="gomoku" onclick=gomoku()>Gomoku</button> <button class='a' id="customset" onclick=customset()>Custom</button></p></div>
+					<div></p><button class='a' id="ticttactoe" onclick=tictactoe()>Tic-Tac-Toe</button> <button class='a' id="gomoku" onclick=gomoku()>Gomoku</button> <button class='a' id="connectf" onclick=connectf()>Connect Four</button> <button class='a' id="customset" onclick=customset()>Custom</button></p></div>
 					<div style="height:15px;" id="custom_zone"><span id="customdim">Good Luck, Have Fun!</span><span id="customcol"></span><span id="custombt"></span><span id="customerr" style="color:#d24646;font-weight:bold;"></span></div>
 					<div id="credits" class="credits">
 						<h4>Created by Tudor Tarniceru</h4>
