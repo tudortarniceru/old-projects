@@ -15,10 +15,25 @@ div.block {
 	-webkit-filter:brightness(85%);
 }
 .zero {
-	background-color:rgb(177, 183, 197);
+	
 }
 .one {
-	background-color:rgb(254, 234, 152);
+	
+}
+button.c {
+	background-color: #242e42;
+    border: 1.5px solid black;
+    color: white;
+	width: 20px;
+    text-align: center;
+    display: inline-block;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    cursor: default;
+}
+button.c:hover {
+	filter:brightness(90%);
+	-webkit-filter:brightness(90%);
 }
 button.a {
     background-color: #242e42;
