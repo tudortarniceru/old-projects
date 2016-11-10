@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+	<meta charset="UTF-8"> 
+	<head>
+		<link rel="icon" href="favicon.ico" type="image/gif" sizes="16x16">
+		<title>Tudor Tarniceru</title>
+		<link rel="stylesheet" href="style.css">
+		<script>
+			var posts = 4;
+			var loadposts = posts;
+			var title = [' '];
+			var date = [' '];
+			var categories = [' ', 'Website', 'Blog', 'Switch', 'InRows'];
+			var category = [], nrcat = [];
+			var content = [' '], contentrez = [' '], rez = [0];
+			var featuredposts = 3;
+			var featured = [0, 4, 2, 1];
+			
+			function makecategories() {
+				for (var i = 0; i <= posts; ++i) {
+					category[i] = [0];
+				}
+			}
+			makecategories();
+			
+			title[1] = 'Hello World';
+			date[1] = '11/10/2016';
+			content[1] = '<p>Hello World :)</p>';
+			contentrez[1] = '';
+			nrcat[1] = 1;
+			category[1] = [2];
+			rez[1] = 0;
+			
+			title[2] = 'About the Blog';
+			date[2] = '11/10/2016';
+			content[2] = '<p>Here you will find the latest news, patch notes and upcoming features for my projects hosted on this website.</p><p>This is an open source project under the <a style="color:white;" href="https://creativecommons.org/licenses/by-nc/4.0/CC">CC BY-NC 4.0</a> license. This means that you can use the code to make your own blog as long as you respect the terms of the license.</p><p>The goal is to make a one-page, no-databases, fully-functional, intuitive and compact blog which is simple to use by both readers and writers.</p><p>With all of that being said, welcome to my Blog and stay tuned for more updates!</p>';
+			contentrez[2] = '';
+			nrcat[2] = 1;
+			category[2] = [2];
+			rez[2] = 0;
+			
+			title[3] = 'Two new colors added to Switch';
+			date[3] = '11/10/2016';
+			content[3] = '<p>Added 2 new colors to choose from on Switch: <span style="color:#6ddb3b;"> #6ddb3b </span> and <span style="color:#3bdba5;"> #3bdba5 </span></p>';
+			contentrez[3] = '';
+			nrcat[3] = 1;
+			category[3] = [3];
+			rez[3] = 0;
+			
+			title[4] = 'New license for the Website';
+			date[4] = '11/10/2016';
+			content[4] = '<p>The whole website is now licensed under a </p><p><b><a style="color: white;" href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License.</a></b></p><p>This means that you can remix, transform, and build upon the material, copy and redistribute it in any medium or format you want as long as you give appropriate credits, provide a link to the license, indicate if changes were made and not use the material for commercial purposes. Find more by clicking on the license name.</p><p><a style="color:white;" href="https://github.com/tudortarniceru/tudortarniceru.github.io">Here is a link</a> to the GitHub repository of the website, from which you can download it or view the code.</p><p>Good Luck :)</p>';
+			contentrez[4] = '<p>The whole website is now licensed under a </p><p><b><a style="color: white;" href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License.</a></b></p><p>Click below, on "Show More", to learn more about it.</p><p>Good Luck :)</p>';
+			nrcat[4] = 1;
+			category[4] = [1];
+			rez[4] = 1;
+			
+			
+			function leftposts(k, l) {
+				var t;
+				if (l == 1) {
+					t = 'latest';
+				}
+				else {
+					t = 'featured';
+				}
+				document.getElementById(t).innerHTML += '<a href="#post' + k + '" class="link"><div class="item">' + title[k] + '<br><span id="' + t + k + '" style="font-size:12px;">';
+				for (var i = 0; i < nrcat[k]; ++i) {
+					document.getElementById(t + k).innerHTML += categories[category[k][i]];
+					if (i != nrcat[k] - 1) {
+						document.getElementById(t + k).innerHTML += ', ';
+					}
+				}
+				document.getElementById(t + k).innerHTML += ' | ' + date[k];
+				document.getElementById(t + k).innerHTML += '</span></div></a>';
+			}
+			function showlatest() {
+				for (var i = posts; i >= 1; --i) {
+					leftposts(i, 1);
+				}
+			}
+			function showfeatured() {
+				for (var i = featuredposts; i >= 1; --i) {
+					leftposts(featured[i], 2);
+				}
+			}
+			function post(k) {
+				document.getElementById("text" + k).innerHTML = content[k];
+			}
+			function postrez(k) {
+				document.getElementById("text" + k).innerHTML = contentrez[k];
+			}
+			function showposts(k) {
+				document.getElementById("posts").innerHTML = '';
+				for (var i = posts; i >= 1; --i) {
+					if (k == 0 || category[i] == k) {
+						document.getElementById("posts").innerHTML += '<div id="post' + i + '" class="post"><div id="title' + i + '" class="posttitle""></div><div id="text' + i + '" class="posttext"></div><div id="postinfo' + i + '" class="postinfo"><span id="info' + i + '"></span> <span class="more" id="more' + i + '"></span></div></div>';
+						showinfo(i, 1);
+					}
+				}
+			}				
+			function showinfo(k, l) {
+				document.getElementById("title" + k).innerHTML = title[k];
+				if (nrcat[k] == 1) {
+					document.getElementById("info" + k).innerHTML = "Category: "
+				}
+				else {
+					document.getElementById("info" + k).innerHTML = "Categories: "
+				}
+				for (var i = 0; i < nrcat[k]; ++i) {
+					document.getElementById("info" + k).innerHTML += categories[category[k][i]];
+					if (i < nrcat[k] - 1) {
+						document.getElementById("info" + k).innerHTML += ', ';
+					}
+				}
+				document.getElementById("info" + k).innerHTML += " | Posted on: " + date[k];
+				if (rez[k] != 0) {
+					document.getElementById("info" + k).innerHTML += " | ";
+				}
+				if (rez[k] == 0) {
+					post(k);
+				}
+				else if (l == 1) {
+					postrez(k);
+					document.getElementById("more" + k).innerHTML = "<a onclick = 'showinfo(" + k + ", " + 2 + ")'>Show More</a>";  
+				}
+				else if (l == 2) {
+					post(k);
+					document.getElementById("more" + k).innerHTML = "<a onclick = 'showinfo(" + k + ", " + 1 + ")'>Show Less</a>";  
+				}
+			}
+			function loaded() {
+				showlatest();
+				showfeatured();
+				showposts(0);
+			}
+		</script>
+	</head>
+	<body onload="loaded()">
+			<div style="background-color:black">
+				<ul>
+					<li class="item"><a href="../index.html">Tudor Tarniceru</a></li>
+					<li class="item"><a href="../switch/index.html">Switch</a></li>
+					<li class="item"><a href="../inrows/index.html">InRows</a></li>
+					<li class="active menuright" style="float:right;"><a>Blog<sup style="font-size:10px;color:yellow;">New</sup></a></li>
+				</ul>
+			</div>
+			<br>
+			<center>
+				<div style="line-height:65%;">
+					<h2>Welcome to the Blog</h2>
+					<h4>Enjoy your stay</h4>
+				</div>
+				<br>
+				<div style="width:1050px;">
+					<div class="left">
+						<div class="leftitem">
+							<div class="lefttitle"> Featured Posts </div>
+							<div id="featured">
+								
+							</div>
+						</div>
+						<br>
+						<div class="leftitem">
+							<div class="lefttitle"> Latest Posts </div>
+							<div id="latest">
+								
+							</div>
+						</div>
+					</div>
+					<div class="posts">
+						<div id="posts">
+							
+						</div>
+						<br>
+						<h4>Created by Tudor Tarniceru</h4>
+						<h5>Alpha(&alpha;) Version</h5>
+					</div>
+				</div>
+			</center>
+	</body>
+</html>

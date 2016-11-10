@@ -1,4 +1,5 @@
 body {
+	margin: 0px;
 	font-family: consolas;
 	background-image: url("data/background.png");
 	cursor: default;
@@ -9,7 +10,7 @@ ul {
     padding: 0;
     overflow: hidden;
     background-color: #333;
-	border: 2px solid black;
+	border-bottom: 2px solid black;
 	border-radius: 1px;
 	
 }
@@ -72,6 +73,9 @@ li:last-child {
 li.item {
 	-webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
+}
+li.menuright {
+	border-left: 2px solid black;
 }
 li a {
     display: block;
