@@ -128,8 +128,26 @@ div.a {
 	cursor:pointer;
 }
 
-li.item:hover {
-    background-color: #111;
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+	height: 48px;
+	width: 100%;
+    background-color: #333;
+	border-bottom: 2px solid black;
+	margin-bottom: 2px;
+	border-radius: 1px;
+	
+}
+li {
+	height: 100%;
+    border-right: 2px solid black;
+	float:left;
+}
+
+li:last-child {
+    border-right: none;
 }
 li.item {
 	-webkit-transition-duration: 0.2s;
@@ -138,41 +156,37 @@ li.item {
 li.menuright {
 	border-left: 2px solid black;
 }
+li a {
+    display: block;
+    color: white;
+    height: 48px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+div.play a{
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+div.soon a{
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+li.item:hover {
+    background-color: #111;
+}
 li.active {
 	font-weight: bold;
 	background-color: #595959;
 }
 li.soon {
 	background-color:  #262626;
-}
-li.mm {
-    border-right: 2px solid black;
-	float:left;
-}
-
-li.mm:last-child {
-    border-right: none;
-}
-
-li.mm a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-ul.mm {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-	height: 48px;
-    background-color: #333;
-	border-bottom: 2px solid black;
-	border-radius: 1px;
-	
-}
-div.credits a {
-	color: #142952;
 }
 
 div.credits {
@@ -197,14 +211,17 @@ div.credits {
     min-width: 160px;
 	border: 2px solid black;
     z-index: 1;
+	margin-left: -2px;
 }
 
 .dropdown-content a {
     color: white;
-    padding: 12px 16px;
     text-decoration: none;
 	border-bottom: 2px solid black;
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
 .dropdown-content a:last-child {
