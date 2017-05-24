@@ -4,9 +4,10 @@
 	<head>
 		<link rel="icon" href="favicon.ico" type="image/gif" sizes="16x16">
 		<title>Tudor Tarniceru</title>
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" id="css" href="style1.css">
+		<script src="colorscheme.js"></script>
 	</head>
-	<body>
+	<body onload="show_color_schemes();">
 		<center>
 			<div style="background-color:black">
 				<ul>
@@ -14,20 +15,21 @@
 					<li class="item"><a href="switch/index.html">Switch</a></li>
 					<li class="item"><a href="inrows/index.html">InRows</a></li>
 					<li class="item menuright" style="float:right;"><a href="blog/index.html">Blog<sup style="font-size:10px;color:yellow;">New</sup></a></li>
+					<li class="mm item menuright dropdown" style="float:right;"><a>Color Schemes</a> <div id="color_scheme_list" class="dropdown-content"> </div> </li>
 				</ul>
 			</div>
 			<br><br>
 			<div>
 				<div class="showcase" id="switch">
 					<div class="title"><p>Switch</p></div>
-					<div class="desc"><p><img src="data/switchs.jpg" style="border:1px solid black; display:table-cell;" height="170" width="170"><br><br>Switch is a puzzle game in which you are given 2 grids and must make them look the same by changing their elements.<br><br>Clicking on a square from the left grid will change its and its neighbours color.<br><br>You can make your own grids or use random generated ones.</p></div>
+					<div class="desc"><p><img src="data/switchs.jpg" class="img_desc" height="170" width="170"><br><br>Switch is a puzzle game in which you are given 2 grids and must make them look the same by changing their elements.<br><br>Clicking on a square from the left grid will change its and its neighbours color.<br><br>You can make your own grids or use random generated ones.</p></div>
 					<div class="status">Now Available</div>
 					<div class="players">Singleplayer</div>
 					<div class="play"><p><a href="switch/index.html">Play Now</a></p></div>
 				</div>
 				<div class="showcase" id="inrows">
 					<div class="title"><p>InRows</p></div>
-					<div class="desc"><p><img src="data/inrowss.jpg" style="border:1px solid black; display:table-cell;" height="170" width="170"><br><br>InRows is a game similar to Gomoku or Tic-Tac-Toe in which two players place pieces on a grid. The first player who lines up a specified number of pieces on vertical, horizontal or diagonal wins.<br><br>Players place pieces in turns by clicking on a square from the grid, one piece per turn.</p></div>
+					<div class="desc"><p><img src="data/inrowss.jpg" class="img_desc" height="170" width="170"><br><br>InRows is a game similar to Gomoku or Tic-Tac-Toe in which two players place pieces on a grid. The first player who lines up a specified number of pieces on vertical, horizontal or diagonal wins.<br><br>Players place pieces in turns by clicking on a square from the grid, one piece per turn.</p></div>
 					<div class="status">Now Available</div>
 					<div class="players">Local Multiplayer</div>
 					<div class="play"><p><a href="inrows/index.html">Play Now</a></p></div>

@@ -1,25 +1,38 @@
 body {
 	margin: 0px;
 	font-family: consolas;
-	background-image: url("data/background.png");
+	background-image: url("data/background1.png");
 	cursor: default;
 	color: white;
 }
 div.block {
-	width:50px;
-	height:50px;
+	width:25px;
+	height:25px;
 	display:inline-block;
 	border: 2px solid #282C33;
+	align-content:center;
+	position: relative;
 }
-.pl:hover {
+span.ord {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateY(-50%) translateX(-50%);
+	font-size:75%;
+}
+div.block:hover {
 	filter:brightness(85%);
 	-webkit-filter:brightness(85%);
 }
-.zero {
-	
+
+.z {
+	background-color:#b1b7c5;
 }
-.one {
-	
+.a {
+	background-color:#9c6514;
+}
+.b {
+	background-color:#149c97;
 }
 button.c {
 	background-color: #242e42;
@@ -31,10 +44,6 @@ button.c {
     -webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
     cursor: default;
-}
-button.c:hover {
-	filter:brightness(90%);
-	-webkit-filter:brightness(90%);
 }
 button.a {
     background-color: #242e42;
@@ -60,66 +69,111 @@ button.b {
     transition-duration: 0.2s;
     cursor: default;
 }
+input.b {
+	background-color: #242e42;
+    border: 1.5px solid black;
+    color: white;
+	min-width: 70px;
+    text-align: center;
+    display: inline-block;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    cursor: default;
+}
 select.b {
 	background-color: #242e42;
-	width:40px;
+	width:45px;
 	color: white;
 	border:0.1px solid black;
 	-webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
 }
+select.c {
+	width:30px;
+	border:0.1px solid black;
+}
 select.b:hover {
 	background-color: #291f47;
 	color: white;
 }
-button.a:hover, button.b:hover , button.done:hover  {
+button.a:hover, button.b:hover , button.done:hover, button.c:hover {
 	background-color: #291f47;
     color: white;
 }
 button.done {
 	background-color: #203560;
 }
+button.a:hover , button.b:hover, button.done:hover  {
+	background-color: #291f47;
+    color: white;
+}
+button.c:hover {
+	filter:brightness(90%);
+	-webkit-filter:brightness(90%);
+}
 div.game_zone {
 	width:1000px;
-	height:750px;
+	height:720px;
 	background-color: #4f5966;
 	border: 2px #282C33 solid;
 	color: white;
 	margin:20px;
 	padding:10px 10px 5px 10px;
-	font-family: consolas;
 	
 }
 div.gsquare {
+	display:inline-block;
 	line-height:0%;
 	width:450px;
-	height:460px;
+	height:450px;
 	padding:10px;
-	margin:0.5px 10px 10px 10px;
+	margin:4px;
 	background-color: #6d767e;
 	border: 2px #282C33 solid;
 }
 div.outborder {
 	border: 2px solid #282C33;
 }
-textarea.code {
-	height:40px; 
-	width:900px; 
-	text-align:center; 
-	resize:none;
-	padding:2px 10px 2px 10px;
-	margin:0px;
+div.profile {
+	display:inline-block;
+	width:220px;
+	margin:4px;
 	background-color: #6d767e;
 	border: 2px #282C33 solid;
-	color:white;
-	font-family:consolas;
 }
-div.v {
-	float:left;
+div.proftitle {
+	padding:2px;
+	font-size: 18px;
+	font-weight: bold;
+	background-color: #535f75;
 }
-div.a {
-	float:right;
+div.score {
+	padding:3px;
+	font-size: 19px;
+	background-color: #455063;
+	
 }
+div.picks {
+	padding:2px;
+	height:20px;
+	background-color: #37474f;
+}
+div.lastpickstitle {
+	padding:2px;
+	font-size: 17px;
+	background-color: #535f75;
+}
+div.lastpicks{
+	padding:4px;
+	font-size: 16px;
+	background-color: #455063;
+	height:290px;
+}
+div.color {
+	padding:2px;
+	height:20px;
+}
+
 li.item:hover {
     background-color: #111;
 }
@@ -157,12 +211,58 @@ ul.mm {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;
     background-color: #333;
+	height: 48px;
 	border-bottom: 2px solid black;
 	border-radius: 1px;
-	
 }
-div.credits a {
-	color: #142952;
+
+div.credits {
+	color: white;
+}
+
+.customerr {
+	color:#d24646;
+	font-weight:bold;
+}
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+	border: 2px solid black;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+	border-bottom: 2px solid black;
+    display: block;
+}
+
+.dropdown-content a:last-child {
+	border-bottom: none;
+}
+
+
+.dropdown-content a:hover {
+	background-color: #111;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-active {
+	font-weight: bold;
+	background-color: #595959;
 }

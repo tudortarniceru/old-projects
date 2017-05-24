@@ -4,7 +4,9 @@
 	<head>
 		<link rel="icon" href="favicon.ico" type="image/gif" sizes="16x16">
 		<title>InRows - Tudor Tarniceru</title>
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" id="css" href="style1.css">
+		<script src="../colorscheme.js"></script>
+		<script>change_color_scheme(localStorage.getItem("color_scheme"));</script>
 		<script>
 			var v = [];
 			var n = 0;
@@ -272,7 +274,7 @@
 				else {
 					document.getElementById("bgrav").innerHTML = '<button class="done a" onclick="gravop()">Gravity</button>';
 				}
-				}
+			}
 			function gravop() {
 				document.getElementById("customdim").innerHTML = "Gravity makes the pieces fall when placed. Changing it starts a new game. Gravity: ";
 				if (grav == 0) {
@@ -305,12 +307,15 @@
 				checkund();
 				initlst();
 				updatelst();
+				checkgrav();
+				var txt = "";
 				for (i = 1; i <= n; ++i) {
 					for (j = 1; j <= m; ++j) {
-						document.getElementById("pz").innerHTML += "<span id=" + i + "_" + j + "><div id='d" + i + "_" + j + "' class='block z' onclick=chg(" + i + "," + j +")></div></span>";
-						}
-					document.getElementById("pz").innerHTML += "<br>";
+						txt += "<span id=" + i + "_" + j + "><div id='d" + i + "_" + j + "' class='block z' onclick=chg(" + i + "," + j +")></div></span>";
+					}
+					txt += "<br>";
 				}
+				document.getElementById("pz").innerHTML = txt;
 			}
 			function undo() {
 				ordt--;
@@ -484,14 +489,15 @@
 			}
 		</script>
 	</head>
-	<body>
+	<body onload="show_color_schemes();">
 		<center>
-			<div style="background-color:black">
+			<div>
 				<ul class="mm">
 					<li class="mm item"><a href="../index.html">Tudor Tarniceru</a></li>
 					<li class="mm item"><a href="../switch/index.html">Switch</a></li>
 					<li class="mm active"><a>InRows</a></li>
 					<li class="mm item menuright" style="float:right;"><a href="../blog/index.html">Blog<sup style="font-size:10px;color:yellow;">New</sup></a></li>
+					<li class="mm item menuright dropdown" style="float:right;"><a>Color Schemes</a> <div id="color_scheme_list" class="dropdown-content"> </div> </li>
 				</ul>
 			</div>
 			<div class="game_zone">
@@ -553,7 +559,7 @@
 					<p id="desc" style="height:40px; width:900px;"><b>How to play:</b> Click on a free square when it is your turn to place a piece inside it. Line up the selected number of pieces <span id="lineuppc"></span> to win. Click on a player's name to change its settings.</p>
 					<p style="height:30px;" id="control">Choose the game settings</p>
 					<div></p><button class='a' id="ticttactoe" onclick=tictactoe()>Tic-Tac-Toe</button> <button class='a' id="gomoku" onclick=gomoku()>Gomoku</button> <button class='a' id="connectf" onclick=connectf()>Connect Four</button> <button class='a' id="customset" onclick=customset()>Custom</button></p></div>
-					<div style="height:15px;" id="custom_zone"><span id="customdim">Good Luck, Have Fun!</span><span id="customcol"></span><span id="custombt"></span><span id="customerr" style="color:#d24646;font-weight:bold;"></span></div>
+					<div style="height:15px;" id="custom_zone"><span id="customdim">Good Luck, Have Fun!</span><span id="customcol"></span><span id="custombt"></span><span id="customerr" class="customerr"></span></div>
 					<div id="credits" class="credits">
 						<h4>Created by Tudor Tarniceru</h4>
 					</div>

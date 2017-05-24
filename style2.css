@@ -1,14 +1,14 @@
 body {
 	margin: 0px;
 	font-family: consolas;
-	background-image: url("data/background.png");
+	background-image: url("data/background2.png");
 	cursor: default;
 }
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+	height: 48px;
     background-color: #333;
 	border-bottom: 2px solid black;
 	border-radius: 1px;
@@ -51,8 +51,14 @@ div.players {
 }
 div.desc {
 	padding: 10px;
-	height:430px;
+	height: 430px;
 }
+
+img.img_desc {
+	border: 1px solid black;
+	display:table-cell;
+}
+
 div.status {
 	padding: 4px;
 	font-size:12px;
@@ -103,4 +109,54 @@ li.active {
 }
 li.soon {
 	background-color:  #262626;
+}
+
+div.credits {
+	color: white;
+}
+
+.customerr {
+	color:#d24646;
+	font-weight:bold;
+}
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+	border: 2px solid black;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+	border-bottom: 2px solid black;
+    display: block;
+}
+
+.dropdown-content a:last-child {
+	border-bottom: none;
+}
+
+
+.dropdown-content a:hover {
+	background-color: #111;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-active {
+	font-weight: bold;
+	background-color: #595959;
 }
