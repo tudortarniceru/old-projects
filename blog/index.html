@@ -3,7 +3,7 @@
 	<meta charset="UTF-8"> 
 	<head>
 		<link rel="icon" href="favicon.ico" type="image/gif" sizes="16x16">
-		<title>Tudor Tarniceru</title>
+		<title>Blog Template - Tudor Tarniceru</title>
 		<link rel="stylesheet" id="css" href="style1.css">
 		<script src="../colorscheme.js"></script>
 		<script>
@@ -11,11 +11,11 @@
 			var loadposts = posts;
 			var title = [' '];
 			var date = [' '];
-			var categories = [' ', 'Website', 'Blog', 'Switch', 'InRows'];
+			var categories = [' ', 'Template', 'License', 'Features', 'Miscellaneous'];
 			var category = [], nrcat = [];
 			var content = [' '], contentrez = [' '], rez = [0];
 			var featuredposts = 3;
-			var featured = [0, 1, 2, 4];
+			var featured = [0, 2, 3, 4];
 			
 			function makecategories() {
 				for (var i = 0; i <= posts; ++i) {
@@ -25,35 +25,35 @@
 			makecategories();
 			
 			title[1] = 'Hello World';
-			date[1] = '10/11/2016';
+			date[1] = '23/05/2017';
 			content[1] = '<p>Hello World :)</p>';
 			contentrez[1] = '';
 			nrcat[1] = 1;
-			category[1] = [2];
+			category[1] = [4];
 			rez[1] = 0;
 			
 			title[2] = 'About the Blog';
-			date[2] = '10/11/2016';
-			content[2] = '<p>Here you will find the latest news, patch notes and upcoming features for my projects hosted on this website.</p><p>This is an open source project under the <a class="link" href="https://creativecommons.org/licenses/by-nc/4.0">CC BY-NC 4.0</a> license. This means that you can use the code to make your own blog as long as you respect the terms of the license.</p><p>The goal is to make a one-page, no-databases, fully-functional, intuitive and compact blog which is simple to use by both readers and writers.</p><p>With all of that being said, welcome to my Blog and stay tuned for more updates!</p>';
+			date[2] = '23/05/2017';
+			content[2] = '<p>Welcome to the site! What you are looking at now is a blog / journal template.</p><p>The goal is to make a one-page, no-databases, fully-functional, intuitive and compact blog which is simple to use by both readers and writers.</p><p>This is an open source project under the <a class="link" href="https://creativecommons.org/licenses/by-nc/4.0"><b>CC BY-NC 4.0</b></a> license. This means that you can use the code to make your own blog as long as you respect the terms of the license.</p><p>With all of that being said, welcome to the Blog Template!</p>';
 			contentrez[2] = '';
 			nrcat[2] = 1;
-			category[2] = [2];
+			category[2] = [1];
 			rez[2] = 0;
 			
-			title[3] = 'Two new colors added to Switch';
-			date[3] = '10/11/2016';
-			content[3] = '<p>Added 2 new colors to choose from on Switch: <span style="color:#6ddb3b;"> #6ddb3b </span> and <span style="color:#3bdba5;"> #3bdba5 </span></p>';
+			title[3] = 'Theme Features';
+			date[3] = '24/05/2017';
+			content[3] = '<p>The template features a simple, elegant and compact UI with fast loading-times, making it easy to read and understand by users . Since there are no databases and it works in a simple and intuitive way you can quickly set it up.</p><p>Posts can be organized in various, user-defined categories for ease of access and searching.</p><p>Any post can be pinned to the top of the Featured Posts section, located to the top right of the UI. This makes them easily seen. All posts can have a custom set timestamp for backdating and other purposes</p><p>For long posts, a preview can be written. Users will see this preview along with "Show More". This makes the pages shorter and easier to navigate.</p>';
 			contentrez[3] = '';
 			nrcat[3] = 1;
-			category[3] = [3];
+			category[3] = [1];
 			rez[3] = 0;
 			
 			title[4] = 'New license for the Website';
-			date[4] = '10/11/2016';
-			content[4] = '<p>The whole website is now licensed under a </p><p><b><a class="link" href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License.</a></b></p><p>This means that you can remix, transform, and build upon the material, copy and redistribute it in any medium or format you want as long as you give appropriate credits, provide a link to the license, indicate if changes were made and not use the material for commercial purposes. Find more by clicking on the license name.</p><p><a class="link" href="https://github.com/tudortarniceru/tudortarniceru.github.io">Here is a link</a> to the GitHub repository of the website, from which you can download it or view the code.</p><p>Good Luck :)</p>';
-			contentrez[4] = '<p>The whole website is now licensed under a </p><p><b><a class="link" href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License.</a></b></p><p>Click below, on "Show More", to learn more about it.</p><p>Good Luck :)</p>';
+			date[4] = '24/05/2017';
+			content[4] = '<p>The whole website is now licensed under a </p><p><b><a class="link" href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License.</a></b></p><p>This means that you can remix, transform, and build upon the material, copy and redistribute it in any medium or format you want as long as you give appropriate credits, provide a link to the license, indicate if changes were made and not use the material for commercial purposes. Find more by clicking on the license name.</p><p><a class="link" href="https://github.com/tudortarniceru/tudortarniceru.github.io"><b>Here is a link</b></a> to the GitHub repository of the website, from which you can download it or view the code.</p><p>Good Luck :)</p>';
+			contentrez[4] = '<p>The whole website is now licensed under a </p><p><b><a class="link" href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License.</a></b></p><p>Click below, on "Show More", to learn more about it.</p>';
 			nrcat[4] = 1;
-			category[4] = [1];
+			category[4] = [2];
 			rez[4] = 1;
 			
 			
@@ -150,8 +150,7 @@
 			<br>
 			<center>
 				<div style="line-height:65%;">
-					<h2>Welcome to the Blog</h2>
-					<h4>Enjoy your stay</h4>
+					<h2>Welcome to the Blog Template</h2>
 				</div>
 				<br>
 				<div style="width:1050px;">
@@ -164,7 +163,7 @@
 						</div>
 						<br>
 						<div class="leftitem">
-							<div class="lefttitle"> Latest Posts </div>
+							<div class="lefttitle"> Posts </div>
 							<div id="latest">
 								
 							</div>

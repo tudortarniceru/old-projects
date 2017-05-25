@@ -501,8 +501,8 @@
 				</ul>
 			</div>
 			<div class="game_zone">
-				<div>
-					<div style="float:left;">
+				<div style="display: flex;">
+					<div>
 						<div id="prof1" class="profile">
 							<div class="proftitle">
 								<p id="pl1n" onclick="settings(1)">Player One</p>
@@ -526,11 +526,13 @@
 							</div>
 						</div>
 					</div>
-					<div class="gsquare">
-						<div class="outborder" id="pz" style="display:none;">
+
+					<div class="gsquare" style="flex: 1;justify-content: center;">
+    					<div class="outborder" id="pz" style="display: none; margin-top: auto; margin-bottom: auto">
 						</div>
 					</div>
-					<div style="float:right;">
+
+					<div>
 						<div id="prof2" class="profile">
 							<div class="proftitle">
 								<p id="pl2n" onclick="settings(2)">Player Two</p>

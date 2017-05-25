@@ -218,7 +218,7 @@
 					}
 				}
 				document.getElementById("start").innerHTML = "<button class='a' id='restartb' onclick=restartg()>Restart</button>";
-				document.getElementById("desc").innerHTML = "<b>How to play:</b> Click on a square from the left grid to change its and its neighbours colour.<br>Make both grids look the same.";
+				document.getElementById("desc").innerHTML = "<b>How to play:</b> Click on a square from the left grid to change both its own and its neighbours colour.<br>Make both grids look the same.";
 				document.getElementById("v").style.display = "table-cell";
 				document.getElementById("a").style.display = "table-cell";
 				wrt();
@@ -257,7 +257,7 @@
 				document.getElementById("getcstcd").innerHTML = "<button class='a' id='getcstcd' onclick=getcstcd()>Get Grid Code</button>";
 				document.getElementById("mapmaker").innerHTML = "<button class='a' id='mapmaker' onclick=mapmaker()>Grid Maker</button>";
 				document.getElementById("chgclr").innerHTML = "<button class='a' id='chgclr' onclick=chgclr()>Color</button>";
-				document.getElementById("desc").innerHTML = "<b>How to play:</b> Click on a square from the left grid to change its and its neighbours colour.<br>Make both grids look the same.";
+				document.getElementById("desc").innerHTML = "<b>How to play:</b> Click on a square from the left grid to change both its own and its neighbours colour.<br>Make both grids look the same.";
 				document.getElementById("customdim").innerHTML = "Good Luck, Have Fun!";
 				document.getElementById("customerr").innerHTML = "";
 				clk = 0;
@@ -417,7 +417,7 @@
 					document.getElementById("customerr").innerHTML = "";
 					document.getElementById("getcstcd").innerHTML = "<button class='a' id='getcstcd' onclick=getcstcd()>Get Grid Code</button>";
 					document.getElementById("chgclr").innerHTML = "<button class='a' id='chgclr' onclick=chgclr()>Color</button>";
-					document.getElementById("desc").innerHTML = "<b>How to use:</b> Click on a square from a grid to change its and its neighbours colour.<br>Click the 'Get Grid Code' button to get the grid code.";
+					document.getElementById("desc").innerHTML = "<b>How to use:</b> Click on a square from a grid to change both its own and its neighbours colour.<br>Click the 'Get Grid Code' button to get the grid code.";
 					n = csn;
 					m = csm;
 					wrtsize();
@@ -437,7 +437,7 @@
 				csn = 1;
 				csm = 1;
 				clearintro();
-				document.getElementById("desc").innerHTML = "<b>How to play:</b> Click on a square from the left grid to change its and its neighbours colour.<br>Make both grids look the same.";
+				document.getElementById("desc").innerHTML = "<b>How to play:</b> Click on a square from the left grid to change both its own and its neighbours colour.<br>Make both grids look the same.";
 				document.getElementById("customdim").innerHTML = "Choose the size. Each grid must have at least 4 elements. Rows: <select id='selectn' class='b' onchange='customn()'><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option></select> Columns: <select id='selectm' class='b' onchange='customm()'><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option></select> <button id='submitcst' class='b' onclick='startedit()'>Create</button> <button class='b' onclick='showglhf()'>Close</button>";
 			}
 			function chgclr() {
@@ -487,7 +487,7 @@
 					</div>
 				</div>
 				<div style="clear:both;">
-					<p id="desc" style="height:40px; width:900px"><b>How to play:</b> Click on a square from the left grid to change its and its neighbours colour.<br>Make both grids look the same.</p>
+					<p id="desc" style="height:40px; width:900px"><b>How to play:</b> Click on a square from the left grid to change both its own and its neighbours colour.<br>Make both grids look the same.</p>
 					<p><span id="bf_score" style="font-weight:bold; height:20px;">Moves: <span id="score">-</span></span>&nbsp;|&nbsp;<span id="bf_streak" style="font-weight:bold; height:20px;">Win Streak: <span id="streak">-</span></span>&nbsp;|&nbsp;<span id="bf_size" style="font-weight:bold; height:20px;">Size: <span id="sizen">-</span><span style="font-size:75%;"> x </span><span id="sizem">-</span></span></p>
 					<p style="height:30px;"><span id="intro">Choose the size of the grids, </span><span id = "start"></span> <span id="newg"></span> <span id="entcstcd"><span class="entcstcd" onclick="entcstcd();"><span class="grid_link">enter a grid code</span></span></span> <span id="intro2"> or </span><span id="getcstcd"></span> <span id="mapmaker"><span class="mapmaker" onclick="mapmaker();"><span style="color:#b9bcda; cursor:pointer;">open the 'Grid Maker'</span></span></span> <span id="chgclr"></span></p>
 					<div><p><button class='a' id="d2x2" onclick=d2x2()>2x2</button> <button id="d3x3" class='a' onclick=d3x3()>3x3</button> <button id="d4x4" class='a' onclick=d4x4()>4x4</button> <button id="d5x5" class='a' onclick=d5x5()>5x5</button> <button id="d6x6" class='a' onclick=d6x6()>6x6</button> <button id="d7x7" class='a' onclick=d7x7()>7x7</button> <button id="d8x8" class='a' onclick=d8x8()>8x8</button> <button id="customset" class='a' onclick=customset()>Custom</button></p></div>

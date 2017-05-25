@@ -100,6 +100,9 @@ div.gsquare {
 	margin:0.5px 10px 10px 10px;
 	background-color: #6d767e;
 	border: 2px #282C33 solid;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 div.outborder {
 	border: 2px solid #282C33;

@@ -122,7 +122,7 @@ div.game_zone {
 	
 }
 div.gsquare {
-	display:inline-block;
+	display: flex;
 	line-height:0%;
 	width:450px;
 	height:450px;
