@@ -3,68 +3,68 @@ body {
 	font-family: consolas;
 	background-image: url("data/background2.png");
 	cursor: default;
-	color: white;
+	color: #f2f2f2;
 	text-align: center;
 }
 div.posts {
 	display: inline-block;
 }
 button.loadmore {
-	border: 1px solid #282C33;
-	background-color: #4F5966;
-	color: white;
+	border: 1px solid #736e59;
+	background-color: #B2AD9B;
+	color: #f2f2f2;
 	width: 750px;
 	padding: 8px;
 	font-weight: bold;
 }
 div.left {
 	width: 250px; 
-	color:white;
+	color: #f2f2f2;
 	float: left;
 }
 div.item {
-	background-color: #4F5966;
+	background-color: #B2AD9B;
 	padding: 15px;
-	color: white;
+	color: #f2f2f2;
 	text-align: center;
-	border: 1px solid #282C33;
+	border: 1px solid #736e59;
 	text-decoration: none;
 	-webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
 }
 div.post {
-	border: 2px #282C33 solid;
-	background-color: #4F5966;
-	color: white;
+	border: 2px #736e59 solid;
+	background-color: #B2AD9B;
+	color: #f2f2f2;
 	min-height: 75px;
 	margin-bottom: 20px;
 	width: 750px;
 }
 div.posttitle {
-	background-color: #4F5966;
+	background-color: #B2AD9B;
 	padding: 1px;
 	padding-top: 7px;
 	padding-bottom: 7px;
-	color: white;
+	color: #f2f2f2;
 	text-align: center;
-	border-bottom: 1px solid #282C33;
+	border-bottom: 1px solid #736e59;
 	text-decoration: none;
 	font-weight: bold;
-	background-color: #6d767e;
+	background-color: #8F8C75;
 	font-size: 17px;
 }
 div.postinfo {
-	background-color: #4F5966;
+	background-color: #B2AD9B;
 	padding: 6px;
 	padding-right: 14px;
-	color: white;
-	border-top: 1px solid #282C33;
+	color: #f2f2f2;
+	border-top: 1px solid #736e59;
 	text-decoration: none;
-	background-color: #5E6872;
+	background-color: #8F8C75;
 	text-align: right;
 }
 div.leftitem {
-	border: 1px #282C33 solid;
+	border: 1px #736e59 solid;
 }
 span.more {
 	font-weight: bold;
@@ -77,21 +77,21 @@ div.posttext {
 	padding-left: 10px;
 }
 div.lefttitle {
-	background-color: #4F5966;
+	background-color: #8F8C75;
 	padding: 1px;
 	padding-top: 10px;
 	padding-bottom: 10px;
-	color: white;
+	color: #f2f2f2;
 	text-align: center;
-	border: 1px solid #282C33;
+	border: 1px solid #736e59;
 	text-decoration: none;
 	font-size: 19px;
 	font-weight: bold;
-	background-color: #6d767e;
+	background-color: #8F8C75;
 }
 
 .link {
-	color: white;
+	color: #f2f2f2;
 }
 
 div.item:hover {
@@ -202,7 +202,7 @@ li.soon {
 }
 
 div.credits {
-	color: white;
+	color: #736E59;
 }
 
 .customerr {

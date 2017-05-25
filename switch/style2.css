@@ -3,13 +3,13 @@ body {
 	font-family: consolas;
 	background-image: url("data/background2.png");
 	cursor: default;
-	color: white;
+	color: #f2f2f2;
 }
 div.block {
 	width:50px;
 	height:50px;
 	display:inline-block;
-	border: 2px solid #282C33;
+	border: 2px solid #736e59;
 }
 .pl:hover {
 	filter:brightness(85%);
@@ -24,9 +24,9 @@ div.block {
 }*/
 
 button.c {
-	background-color: #242e42;
-    border: 1.5px solid black;
-    color: white;
+	background-color: #635E55;
+    border: 1.5px solid #736e59;
+    color: #f2f2f2;
 	width: 20px;
     text-align: center;
     display: inline-block;
@@ -39,9 +39,9 @@ button.c:hover {
 	-webkit-filter:brightness(90%);
 }
 button.a {
-    background-color: #242e42;
-    border: 1.5px solid black;
-    color: white;
+    background-color: #635E55;
+    border: 1.5px solid #736e59;
+    color: #f2f2f2;
 	min-width:108px;
 	padding: 5px;
     text-align: center;
@@ -52,9 +52,9 @@ button.a {
     cursor: default;
 }
 button.b {
-	background-color: #242e42;
-    border: 1.5px solid black;
-    color: white;
+	background-color: #635E55;
+    border: 1.5px solid #736e59;
+    color: #f2f2f2;
 	min-width: 70px;
     text-align: center;
     display: inline-block;
@@ -63,30 +63,30 @@ button.b {
     cursor: default;
 }
 select.b {
-	background-color: #242e42;
+	background-color: #635E55;
 	width:40px;
-	color: white;
-	border:0.1px solid black;
+	color: #f2f2f2;
+	border:0.1px solid #736e59;
 	-webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
 }
 select.b:hover {
-	background-color: #291f47;
-	color: white;
+	background-color: #636375;
+	color: #f2f2f2;
 }
 button.a:hover, button.b:hover , button.done:hover  {
-	background-color: #291f47;
-    color: white;
+	background-color: #636375;
+    color: #f2f2f2;
 }
 button.done {
-	background-color: #203560;
+	background-color: #4A5657;
 }
 div.game_zone {
 	width:1000px;
 	height:750px;
-	background-color: #4f5966;
-	border: 2px #282C33 solid;
-	color: white;
+	background-color: #9B957D;
+	border: 2px #736e59 solid;
+	color: #f2f2f2;
 	margin:20px;
 	padding:10px 10px 5px 10px;
 	font-family: consolas;
@@ -98,14 +98,14 @@ div.gsquare {
 	height:460px;
 	padding:10px;
 	margin:0.5px 10px 10px 10px;
-	background-color: #6d767e;
-	border: 2px #282C33 solid;
+	background-color: #C9BDA5;
+	border: 2px #736e59 solid;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 div.outborder {
-	border: 2px solid #282C33;
+	border: 2px solid #736e59;
 }
 textarea.code {
 	height:40px; 
@@ -114,9 +114,9 @@ textarea.code {
 	resize:none;
 	padding:2px 10px 2px 10px;
 	margin:0px;
-	background-color: #6d767e;
-	border: 2px #282C33 solid;
-	color:white;
+	background-color: #C9BDA5;
+	border: 2px #736e59 solid;
+	color: #f2f2f2;
 	font-family:consolas;
 }
 div.v {
@@ -127,7 +127,7 @@ div.a {
 }
 
 .grid_link {
-	color:#b9bcda; 
+	color:#dedcd4; 
 	cursor:pointer;
 }
 
@@ -161,7 +161,7 @@ li.menuright {
 }
 li a {
     display: block;
-    color: white;
+    color: #f2f2f2;
     height: 48px;
     padding-left: 20px;
     padding-right: 20px;
@@ -172,12 +172,12 @@ li a {
     text-decoration: none;
 }
 div.play a{
-    color: white;
+    color: #f2f2f2;
     text-align: center;
     text-decoration: none;
 }
 div.soon a{
-    color: white;
+    color: #f2f2f2;
     text-align: center;
     text-decoration: none;
 }
@@ -193,7 +193,7 @@ li.soon {
 }
 
 div.credits {
-	color: white;
+	color: #f2f2f2;
 }
 
 .customerr {
@@ -218,7 +218,7 @@ div.credits {
 }
 
 .dropdown-content a {
-    color: white;
+    color: #f2f2f2;
     text-decoration: none;
 	border-bottom: 2px solid black;
     display: flex;

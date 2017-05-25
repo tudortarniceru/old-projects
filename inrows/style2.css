@@ -3,13 +3,13 @@ body {
 	font-family: consolas;
 	background-image: url("data/background2.png");
 	cursor: default;
-	color: white;
+	color: #f2f2f2;
 }
 div.block {
 	width:25px;
 	height:25px;
 	display:inline-block;
-	border: 2px solid #282C33;
+	border: 2px solid #736e59;
 	align-content:center;
 	position: relative;
 }
@@ -35,9 +35,9 @@ div.block:hover {
 	background-color:#149c97;
 }
 button.c {
-	background-color: #242e42;
-    border: 1.5px solid black;
-    color: white;
+	background-color: #635E55;
+    border: 1.5px solid #736e59;
+    color: #f2f2f2;
 	width: 20px;
     text-align: center;
     display: inline-block;
@@ -46,9 +46,9 @@ button.c {
     cursor: default;
 }
 button.a {
-    background-color: #242e42;
-    border: 1.5px solid black;
-    color: white;
+    background-color: #635E55;
+    border: 1.5px solid #736e59;
+    color: #f2f2f2;
 	min-width:108px;
 	padding: 5px;
     text-align: center;
@@ -59,9 +59,9 @@ button.a {
     cursor: default;
 }
 button.b {
-	background-color: #242e42;
-    border: 1.5px solid black;
-    color: white;
+	background-color: #635E55;
+    border: 1.5px solid #736e59;
+    color: #f2f2f2;
 	min-width: 70px;
     text-align: center;
     display: inline-block;
@@ -70,9 +70,9 @@ button.b {
     cursor: default;
 }
 input.b {
-	background-color: #242e42;
-    border: 1.5px solid black;
-    color: white;
+	background-color: #635E55;
+    border: 1.5px solid #736e59;
+    color: #f2f2f2;
 	min-width: 70px;
     text-align: center;
     display: inline-block;
@@ -81,31 +81,31 @@ input.b {
     cursor: default;
 }
 select.b {
-	background-color: #242e42;
+	background-color: #635E55;
 	width:45px;
-	color: white;
-	border:0.1px solid black;
+	color: #f2f2f2;
+	border:0.1px solid #736e59;
 	-webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
 }
 select.c {
 	width:30px;
-	border:0.1px solid black;
+	border:0.1px solid #736e59;
 }
 select.b:hover {
-	background-color: #291f47;
-	color: white;
+	background-color: #636375;
+	color: #f2f2f2;
 }
 button.a:hover, button.b:hover , button.done:hover, button.c:hover {
-	background-color: #291f47;
-    color: white;
+	background-color: #636375;
+    color: #f2f2f2;
 }
 button.done {
-	background-color: #203560;
+	background-color: #4A5657;
 }
 button.a:hover , button.b:hover, button.done:hover  {
-	background-color: #291f47;
-    color: white;
+	background-color: #636375;
+    color: #f2f2f2;
 }
 button.c:hover {
 	filter:brightness(90%);
@@ -114,9 +114,9 @@ button.c:hover {
 div.game_zone {
 	width:1000px;
 	height:720px;
-	background-color: #4f5966;
-	border: 2px #282C33 solid;
-	color: white;
+	background-color: #9b957d;
+	border: 2px #736e59 solid;
+	color: #f2f2f2;
 	margin:20px;
 	padding:10px 10px 5px 10px;
 	
@@ -128,45 +128,45 @@ div.gsquare {
 	height:450px;
 	padding:10px;
 	margin:4px;
-	background-color: #6d767e;
-	border: 2px #282C33 solid;
+	background-color: #C9BDA5;
+	border: 2px #736e59 solid;
 }
 div.outborder {
-	border: 2px solid #282C33;
+	border: 2px solid #736e59;
 }
 div.profile {
 	display:inline-block;
 	width:220px;
 	margin:4px;
-	background-color: #6d767e;
-	border: 2px #282C33 solid;
+	background-color: #C9BDA5;
+	border: 2px #736e59 solid;
 }
 div.proftitle {
 	padding:2px;
 	font-size: 18px;
 	font-weight: bold;
-	background-color: #535f75;
+	background-color: #9E9B81;
 }
 div.score {
 	padding:3px;
 	font-size: 19px;
-	background-color: #455063;
+	background-color: #8A8976;
 	
 }
 div.picks {
 	padding:2px;
 	height:20px;
-	background-color: #37474f;
+	background-color: #5C5B4F;
 }
 div.lastpickstitle {
 	padding:2px;
 	font-size: 17px;
-	background-color: #535f75;
+	background-color: #9E9B81;
 }
 div.lastpicks{
 	padding:4px;
 	font-size: 16px;
-	background-color: #455063;
+	background-color: #8A8976;
 	height:290px;
 }
 div.color {
@@ -204,7 +204,7 @@ li.menuright {
 }
 li a {
     display: block;
-    color: white;
+    color: #f2f2f2;
     height: 48px;
     padding-left: 20px;
     padding-right: 20px;
@@ -215,12 +215,12 @@ li a {
     text-decoration: none;
 }
 div.play a{
-    color: white;
+    color: #f2f2f2;
     text-align: center;
     text-decoration: none;
 }
 div.soon a{
-    color: white;
+    color: #f2f2f2;
     text-align: center;
     text-decoration: none;
 }
@@ -236,7 +236,7 @@ li.soon {
 }
 
 div.credits {
-	color: white;
+	color: #f2f2f2;
 }
 
 .customerr {
@@ -261,7 +261,7 @@ div.credits {
 }
 
 .dropdown-content a {
-    color: white;
+    color: #f2f2f2;
     text-decoration: none;
 	border-bottom: 2px solid black;
     display: flex;
