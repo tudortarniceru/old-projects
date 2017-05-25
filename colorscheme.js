@@ -1,5 +1,5 @@
-var color_scheme_nr = 2;
-var color_scheme_name = ['', 'Dark Blue', 'Light Brown'];
+var color_scheme_nr = 3;
+var color_scheme_name = ['', 'Dark Blue', 'Light Brown', 'Green'];
 
 if (localStorage.getItem("color_scheme") == null) {
     localStorage.setItem("color_scheme", 1);
