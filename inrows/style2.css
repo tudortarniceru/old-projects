@@ -9,7 +9,7 @@ div.block {
 	width:25px;
 	height:25px;
 	display:inline-block;
-	border: 2px solid #736e59;
+	border: 2px solid #484537;
 	align-content:center;
 	position: relative;
 }
@@ -36,7 +36,7 @@ div.block:hover {
 }
 button.c {
 	background-color: #635E55;
-    border: 1.5px solid #736e59;
+    border: 1.5px solid #484537;
     color: #f2f2f2;
 	width: 20px;
     text-align: center;
@@ -47,7 +47,7 @@ button.c {
 }
 button.a {
     background-color: #635E55;
-    border: 1.5px solid #736e59;
+    border: 1.5px solid #484537;
     color: #f2f2f2;
 	min-width:108px;
 	padding: 5px;
@@ -60,7 +60,7 @@ button.a {
 }
 button.b {
 	background-color: #635E55;
-    border: 1.5px solid #736e59;
+    border: 1.5px solid #484537;
     color: #f2f2f2;
 	min-width: 70px;
     text-align: center;
@@ -71,7 +71,7 @@ button.b {
 }
 input.b {
 	background-color: #635E55;
-    border: 1.5px solid #736e59;
+    border: 1.5px solid #484537;
     color: #f2f2f2;
 	min-width: 70px;
     text-align: center;
@@ -84,13 +84,13 @@ select.b {
 	background-color: #635E55;
 	width:45px;
 	color: #f2f2f2;
-	border:0.1px solid #736e59;
+	border:0.1px solid #484537;
 	-webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
 }
 select.c {
 	width:30px;
-	border:0.1px solid #736e59;
+	border:0.1px solid #484537;
 }
 select.b:hover {
 	background-color: #636375;
@@ -115,7 +115,7 @@ div.game_zone {
 	width:1000px;
 	height:720px;
 	background-color: #9b957d;
-	border: 2px #736e59 solid;
+	border: 2px #484537 solid;
 	color: #f2f2f2;
 	margin:20px;
 	padding:10px 10px 5px 10px;
@@ -129,17 +129,17 @@ div.gsquare {
 	padding:10px;
 	margin:4px;
 	background-color: #C9BDA5;
-	border: 2px #736e59 solid;
+	border: 2px #484537 solid;
 }
 div.outborder {
-	border: 2px solid #736e59;
+	border: 2px solid #484537;
 }
 div.profile {
 	display:inline-block;
 	width:220px;
 	margin:4px;
 	background-color: #C9BDA5;
-	border: 2px #736e59 solid;
+	border: 2px #484537 solid;
 }
 div.proftitle {
 	padding:2px;

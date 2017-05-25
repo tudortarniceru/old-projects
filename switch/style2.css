@@ -9,7 +9,7 @@ div.block {
 	width:50px;
 	height:50px;
 	display:inline-block;
-	border: 2px solid #736e59;
+	border: 2px solid #484537;
 }
 .pl:hover {
 	filter:brightness(85%);
@@ -25,7 +25,7 @@ div.block {
 
 button.c {
 	background-color: #635E55;
-    border: 1.5px solid #736e59;
+    border: 1.5px solid #484537;
     color: #f2f2f2;
 	width: 20px;
     text-align: center;
@@ -40,7 +40,7 @@ button.c:hover {
 }
 button.a {
     background-color: #635E55;
-    border: 1.5px solid #736e59;
+    border: 1.5px solid #484537;
     color: #f2f2f2;
 	min-width:108px;
 	padding: 5px;
@@ -53,7 +53,7 @@ button.a {
 }
 button.b {
 	background-color: #635E55;
-    border: 1.5px solid #736e59;
+    border: 1.5px solid #484537;
     color: #f2f2f2;
 	min-width: 70px;
     text-align: center;
@@ -66,7 +66,7 @@ select.b {
 	background-color: #635E55;
 	width:40px;
 	color: #f2f2f2;
-	border:0.1px solid #736e59;
+	border:0.1px solid #484537;
 	-webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
 }
@@ -85,7 +85,7 @@ div.game_zone {
 	width:1000px;
 	height:750px;
 	background-color: #9B957D;
-	border: 2px #736e59 solid;
+	border: 2px #484537 solid;
 	color: #f2f2f2;
 	margin:20px;
 	padding:10px 10px 5px 10px;
@@ -99,13 +99,13 @@ div.gsquare {
 	padding:10px;
 	margin:0.5px 10px 10px 10px;
 	background-color: #C9BDA5;
-	border: 2px #736e59 solid;
+	border: 2px #484537 solid;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 div.outborder {
-	border: 2px solid #736e59;
+	border: 2px solid #484537;
 }
 textarea.code {
 	height:40px; 
@@ -115,7 +115,7 @@ textarea.code {
 	padding:2px 10px 2px 10px;
 	margin:0px;
 	background-color: #C9BDA5;
-	border: 2px #736e59 solid;
+	border: 2px #484537 solid;
 	color: #f2f2f2;
 	font-family:consolas;
 }

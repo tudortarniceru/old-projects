@@ -10,7 +10,7 @@ div.posts {
 	display: inline-block;
 }
 button.loadmore {
-	border: 1px solid #736e59;
+	border: 1px solid #65604e;
 	background-color: #B2AD9B;
 	color: #f2f2f2;
 	width: 750px;
@@ -27,13 +27,13 @@ div.item {
 	padding: 15px;
 	color: #f2f2f2;
 	text-align: center;
-	border: 1px solid #736e59;
+	border: 1px solid #65604e;
 	text-decoration: none;
 	-webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
 }
 div.post {
-	border: 2px #736e59 solid;
+	border: 2px #65604e solid;
 	background-color: #B2AD9B;
 	color: #f2f2f2;
 	min-height: 75px;
@@ -47,7 +47,7 @@ div.posttitle {
 	padding-bottom: 7px;
 	color: #f2f2f2;
 	text-align: center;
-	border-bottom: 1px solid #736e59;
+	border-bottom: 1px solid #65604e;
 	text-decoration: none;
 	font-weight: bold;
 	background-color: #8F8C75;
@@ -58,13 +58,13 @@ div.postinfo {
 	padding: 6px;
 	padding-right: 14px;
 	color: #f2f2f2;
-	border-top: 1px solid #736e59;
+	border-top: 1px solid #65604e;
 	text-decoration: none;
 	background-color: #8F8C75;
 	text-align: right;
 }
 div.leftitem {
-	border: 1px #736e59 solid;
+	border: 1px #65604e solid;
 }
 span.more {
 	font-weight: bold;
@@ -83,7 +83,7 @@ div.lefttitle {
 	padding-bottom: 10px;
 	color: #f2f2f2;
 	text-align: center;
-	border: 1px solid #736e59;
+	border: 1px solid #65604e;
 	text-decoration: none;
 	font-size: 19px;
 	font-weight: bold;
@@ -202,7 +202,7 @@ li.soon {
 }
 
 div.credits {
-	color: #736E59;
+	color: #65604e;
 }
 
 .customerr {
