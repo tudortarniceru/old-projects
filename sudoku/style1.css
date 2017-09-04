@@ -1,0 +1,39 @@
+body {
+    background-image: url("data/background1.png");
+    color: white;
+}
+
+.main_add {
+    border-color: #282C33;
+}
+
+.sub_add {
+    border-color: #282C33;
+    background-color: #4F5966;
+}
+
+.main {
+    border-color: #282C33;
+}
+
+.controls {
+    border-color: #282C33;
+    background-color: #4F5966;
+}
+
+.input_area {
+    color: white;
+    border-color: #282C33;
+    background-color: #6d767e;
+}
+
+button.a {
+    background-color: #242e42;
+    border-color: black;
+    color: white;
+}
+
+button.a:hover {
+	background-color: #291f47;
+    color: white;
+}

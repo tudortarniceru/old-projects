@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="favicon.ico" type="image/gif" sizes="16x16">
+        <title>Sudoku Solver - Tudor Tarniceru</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" id="css" href="style1.css">
+        <script src="add.js"></script> 
+        <script src="check.js"></script>
+        <script src="get_values.js"></script>
+        <script src="solve.js"></script>
+        <script src="export.js"></script>
+        <script src="../colorscheme.js"></script>
+    </head>
+    <body onload="sudoku_start()">
+        <center>
+            <div style="background-color:black">
+                <ul>
+                        <li class="item"><a href="../index.html">Tudor Tarniceru</a></li>
+                        <li class="item"><a href="../switch/index.html">Switch</a></li>
+                        <li class="item"><a href="../inrows/index.html">InRows</a></li>
+                        <li class="item" style="float:right;"><a href="../blog/index.html">Blog Template</a></li>
+                        <li class="active menuright" style="float:right;"><a>Sudoku Solver</a></li>
+                        <li class="mm item menuright dropdown" style="float:right;"><a>Color Schemes</a> <div id="color_scheme_list" class="dropdown-content"> </div> </li>
+                </ul>
+            </div>
+            <br><br>
+            <div id="container" class="container">
+                <div id="main" class="main"></div>
+                <div id="controls" class="controls">
+                    <textarea id="input_values" class="input_area" rows="8" cols="16"></textarea>
+                    <br>
+                    <span class="text_status">Good: <span id="ok"></span></span><br>
+                    <div class="buttons">
+                        <button type="button" class="a" onclick="get_values()">Import to Table</button><br>
+                        <button type="button" class="a" onclick="solve()">Solve Table</button><br>
+                        <button type="button" class="a" onclick="check_table()">Check Table</button><br>
+                        <button type="button" class="a" onclick="export_values()">Export Table</button><br>
+                    </div>
+                    <span class="bottom_text">Enter the configuration in the text box from the top and then click on the "Import to Table" button to load it to the table.
+                                              After that you can solve, check or export it.
+                    </span>
+                </div>
+            </div>
+        </center>
+    </body>
+</html>

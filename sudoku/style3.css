@@ -1,0 +1,39 @@
+body {
+    background-image: url("data/background3.png");
+    color: #f2f2f2;
+}
+
+.main_add {
+    border-color: #5E7045;
+}
+
+.sub_add {
+    border-color: #5E7045;
+    background-color: #768C5B;
+}
+
+.main {
+    border-color: #5E7045;
+}
+
+.controls {
+    border-color: #5E7045;
+    background-color: #768C5B;
+}
+
+.input_area {
+    color: white;
+    border-color: #5E7045;
+    background-color: #92A168;
+}
+
+button.a {
+    background-color: #7B9E4C;
+    border-color: #5E7045;
+    color: #f2f2f2;
+}
+
+button.a:hover {
+	background-color: #7B8757;
+    color: #f2f2f2;
+}
