@@ -1,25 +1,30 @@
 function solve() {
-    var ok_freq = 0;
-    var nr_freq = 15;
-    for (var i = 1; i <= 9; ++i) {
-        for (var j = 1; j <= 9; ++j) {
-            ok_freq += table[i][j];
-        }
-    }
-    if (ok_freq < nr_freq) {
-        window.alert("The table must have at least " + nr_freq + " non-zero values!");
+    if (check_ok() == 0) {
+        window.alert("The table must be valid to solve it!");
     }
     else {
-        current = 0;
-        for (var i = 0; i <= 9; ++i) {
-            for (var j = 0; j <= 9; ++j) {
-                solved_table[i][j] = 0;
+        var ok_freq = 0;
+        var nr_freq = 15;
+        for (var i = 1; i <= 9; ++i) {
+            for (var j = 1; j <= 9; ++j) {
+                ok_freq += table[i][j];
             }
         }
-        back();
-        for (var i = 0; i < 9; ++i) {
-            for (var j = 0; j < 9; ++j) {
-                table[i][j] = solved_table[i][j];
+        if (ok_freq < nr_freq) {
+            window.alert("The table must have at least " + nr_freq + " non-zero values!");
+        }
+        else {
+            current = 0;
+            for (var i = 0; i <= 9; ++i) {
+                for (var j = 0; j <= 9; ++j) {
+                    solved_table[i][j] = 0;
+                }
+            }
+            back();
+            for (var i = 0; i < 9; ++i) {
+                for (var j = 0; j < 9; ++j) {
+                    table[i][j] = solved_table[i][j];
+                }
             }
         }
     }
